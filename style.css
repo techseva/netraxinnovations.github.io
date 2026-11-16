@@ -230,3 +230,13 @@ input:focus-visible, textarea:focus-visible { border-color: var(--focus); outlin
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
 }
+
+/* Greeting */
+.greet { font-size: 1.25rem; font-weight: 700; color: var(--accent); margin-bottom: .35rem; }
+.promise { font-size: 1.2rem; font-weight: 700; max-width: 34ch; }
+@media (prefers-reduced-motion: no-preference) {
+  .greet, #home-h, .promise { animation: rise .6s var(--ease) both; }
+  #home-h { animation-delay: .08s; }
+  .promise { animation-delay: .16s; }
+}
+@keyframes rise { from { opacity: .001; transform: translateY(8px); } to { opacity: 1; transform: none; } }

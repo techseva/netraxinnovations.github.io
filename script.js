@@ -167,5 +167,9 @@
     }
   });
 
+  const hour = new Date().getHours();
+  document.getElementById('greet-time').textContent =
+    hour >= 5 && hour < 12 ? 'Good morning' : hour >= 12 && hour < 17 ? 'Good afternoon' : hour >= 17 && hour < 22 ? 'Good evening' : 'Hello';
+
   document.getElementById('year').textContent = new Date().getFullYear();
 })();
