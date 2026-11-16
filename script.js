@@ -216,7 +216,7 @@
     'Subscription successful',
     'Your Netra Plus Premium is active.',
     [['Sign-in email', r.email], ['Plan', 'Netra Plus Premium, ' + r.plan], ['Starts', longDate(r.startsAt)], ['Expires on', longDate(r.expiresAt)]],
-    'Open the Netra Plus app and sign in with ' + r.email + '. Premium turns on within a minute and ends on the expiry date. A receipt from Razorpay is sent to your email.',
+    'Open the Netra Plus app and sign in with ' + r.email + '. Premium turns on within a minute and ends on the expiry date.',
   );
 
   const showAlreadyActive = (r) => showResult(
