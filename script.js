@@ -116,6 +116,19 @@
   /* Contact form. */
   const form = document.getElementById('contact-form');
   const formStatus = document.getElementById('form-status');
+
+  /* Subscribe: fill the contact form with the chosen plan and move there. */
+  document.querySelectorAll('[data-plan]').forEach((button) => {
+    button.addEventListener('click', () => {
+      const message = document.getElementById('message');
+      message.value = 'I want to subscribe to Netra Plus Premium, ' + button.dataset.plan +
+        ' plan.\nMy Netra Plus sign-in email: ';
+      formStatus.textContent = button.dataset.plan + ' plan added to your message. Enter your name and email, then send.';
+      const name = document.getElementById('from_name');
+      goTo(document.getElementById('contact'), name.value ? message : name);
+      markCurrent(navLinks.length - 1);
+    });
+  });
   const checks = {
     from_name: (v) => (v ? '' : 'Enter your name.'),
     from_email: (v) => (!v ? 'Enter your email address.' : /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v) ? '' : 'Email needs an @ sign and a domain, for example name@gmail.com.'),
