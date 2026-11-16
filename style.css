@@ -240,3 +240,8 @@ input:focus-visible, textarea:focus-visible { border-color: var(--focus); outlin
   .promise { animation-delay: .16s; }
 }
 @keyframes rise { from { opacity: .001; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+
+/* Live local date and time */
+.clock { display: flex; flex-wrap: wrap; gap: .1rem .6rem; align-items: baseline; margin: 0 0 1rem; color: var(--muted); font-size: 1.05rem; font-variant-numeric: tabular-nums; }
+.clock time { color: var(--text); font-weight: 700; }
+.clock-zone { font-size: .95rem; }

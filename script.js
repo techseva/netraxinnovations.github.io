@@ -167,9 +167,32 @@
     }
   });
 
-  const hour = new Date().getHours();
-  document.getElementById('greet-time').textContent =
-    hour >= 5 && hour < 12 ? 'Good morning' : hour >= 12 && hour < 17 ? 'Good afternoon' : hour >= 17 && hour < 22 ? 'Good evening' : 'Hello';
+  /* Greeting and clock in the visitor's own time zone. Updated quietly, never announced. */
+  const clock = document.getElementById('clock');
+  const clockTime = document.getElementById('clock-time');
+  const clockZone = document.getElementById('clock-zone');
+  const greetTime = document.getElementById('greet-time');
+  const dateFormat = new Intl.DateTimeFormat(undefined, {
+    weekday: 'long', day: 'numeric', month: 'long', year: 'numeric', hour: 'numeric', minute: '2-digit',
+  });
+  let zoneName = '';
+  try {
+    zoneName = new Intl.DateTimeFormat(undefined, { timeZoneName: 'long' })
+      .formatToParts(new Date()).find((part) => part.type === 'timeZoneName').value;
+  } catch (e) { /* zone name is optional */ }
+
+  const tick = () => {
+    const now = new Date();
+    const hour = now.getHours();
+    greetTime.textContent =
+      hour >= 5 && hour < 12 ? 'Good morning' : hour >= 12 && hour < 17 ? 'Good afternoon' : hour >= 17 && hour < 22 ? 'Good evening' : 'Hello';
+    clockTime.textContent = dateFormat.format(now);
+    clockTime.dateTime = now.toISOString();
+    clockZone.textContent = zoneName;
+    clock.hidden = false;
+    setTimeout(tick, 60000 - (now.getSeconds() * 1000 + now.getMilliseconds()) + 50);
+  };
+  tick();
 
   document.getElementById('year').textContent = new Date().getFullYear();
 })();
