@@ -1,26 +1,507 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Netrax Innovations</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Netra Plus – Blind Tech Assistant</title>
+<meta name="description" content="Netra Plus is an Android app for blind and visually impaired people: object detection, instant reading, cash reader, voice typing, announcers, books, radio and file tools, all built for TalkBack.">
+<meta name="theme-color" content="#101114" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#FFFDF7" media="(prefers-color-scheme: light)">
+<meta property="og:title" content="Netra Plus – Blind Tech Assistant">
+<meta property="og:description" content="47 accessible tools for blind and visually impaired Android users, built for TalkBack.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="logo.jpeg">
+<meta name="google-site-verification" content="SWvzGWe6dudHu7guXQA75vZrwbIkXkREB0dEJ9VuQ5U">
+<link rel="icon" href="logo.jpeg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<script>document.documentElement.classList.add('js');</script>
 </head>
-<body style="font-family: Arial, sans-serif; padding: 40px;">
+<body>
+<a class="skip" href="#main">Skip to main content</a>
 
-    <h1>Netrax Innovations</h1>
-    <p>
-        This website is the official developer website for Android applications
-        published under Netrax Innovations.
-    </p>
+<header class="top">
+  <div class="wrap top-in">
+    <a class="brand" href="#home"><img src="logo.jpeg" alt="" width="40" height="40"><span>Netra Plus</span></a>
+    <a class="btn btn-small" href="https://play.google.com/store/apps/details?id=com.netrax.plus" target="_blank" rel="noopener">Get the app<span class="sr"> on Google Play, opens in a new tab</span></a>
+  </div>
+</header>
 
-    <p>
-        Our apps use Google AdMob for advertising and follow all Google Play
-        and AdMob policies.
-    </p>
+<nav class="dock" aria-label="Sections">
+  <ul>
+    <li><a href="#home" data-nav><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M3 11l9-7 9 7v9a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></svg><span>Home</span></a></li>
+    <li><a href="#features" data-nav><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg><span>Features</span></a></li>
+    <li><a href="#plans" data-nav><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M3 8l4.5 4L12 5l4.5 7L21 8l-2 11H5z"/></svg><span>Plans</span></a></li>
+    <li><a href="#developer" data-nav><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-7 8-7s8 2.6 8 7"/></svg><span>Developer</span></a></li>
+    <li><a href="#contact" data-nav><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg><span>Contact</span></a></li>
+  </ul>
+</nav>
 
-    <p>
-        Contact: netraxinnovations@gmail.com
-    </p>
+<main id="main">
 
+<section id="home" class="sec hero" aria-labelledby="home-h">
+  <div class="wrap">
+    <img class="hero-logo" src="logo.jpeg" alt="" width="96" height="96">
+    <h1 id="home-h" tabindex="-1">Netra Plus</h1>
+    <p class="lead">A blind tech assistant for Android. 47 tools that read, describe, announce and convert, made to work with TalkBack from the first screen.</p>
+    <p><a class="btn" href="https://play.google.com/store/apps/details?id=com.netrax.plus" target="_blank" rel="noopener">Download on Google Play<span class="sr">, opens in a new tab</span></a></p>
+    <ul class="facts">
+      <li><strong>Free to download.</strong> Most tools need no subscription.</li>
+      <li><strong>Built for screen readers.</strong> Every control is labelled and every result is spoken.</li>
+      <li><strong>Made by a visually impaired founder.</strong> Every feature is tested with TalkBack.</li>
+    </ul>
+  </div>
+</section>
+
+<section id="features" class="sec" aria-labelledby="features-h">
+  <div class="wrap">
+    <h2 id="features-h" tabindex="-1">Features</h2>
+    <p>Choose a category, then choose a feature to learn what it does and how to use it.</p>
+    <div class="search">
+      <label for="feature-search">Find a feature</label>
+      <input id="feature-search" type="search" autocomplete="off" spellcheck="false" aria-describedby="search-status">
+      <p id="search-status" class="search-status" role="status"></p>
+    </div>
+    <div class="groups">
+<div class="group" id="g-guide">
+<h3 class="disc-h"><button type="button" class="disc disc-group" aria-expanded="false" aria-controls="p-g-guide"><span class="disc-t">Getting around the app<span class="sr">, </span><span class="count">6 topics</span></span><svg class="chev" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 9l6 6 6-6"/></svg></button></h3>
+<div class="panel" id="p-g-guide"><p class="group-intro">Start here if you are new to Netra Plus.</p><ul class="items">
+<li class="item" data-search="home screen tabs home has three tabs: all features, favourites and premium. all features lists every tool in alphabetical order.">
+<h4 class="disc-h"><button type="button" class="disc" aria-expanded="false" aria-controls="p-guide-home-screen-tabs"><span class="disc-t">Home screen tabs</span><svg class="chev" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 9l6 6 6-6"/></svg></button></h4>
+<div class="panel" id="p-guide-home-screen-tabs"><p>Home has three tabs: All Features, Favourites and Premium. All Features lists every tool in alphabetical order.</p><p class="how">How to use</p><ol><li>Open Netra Plus.</li><li>Move to the tab row at the top and choose a tab.</li><li>Swipe through the list and double tap a feature to open it.</li></ol></div>
+</li>
+<li class="item" data-search="search for a feature the search box at the top of home finds a tool by name and tells you how many features match.">
+<h4 class="disc-h"><button type="button" class="disc" aria-expanded="false" aria-controls="p-guide-search-for-a-feature"><span class="disc-t">Search for a feature</span><svg class="chev" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 9l6 6 6-6"/></svg></button></h4>
+<div class="panel" id="p-guide-search-for-a-feature"><p>The search box at the top of Home finds a tool by name and tells you how many features match.</p><p class="how">How to use</p><ol><li>Double tap the search box.</li><li>Type or dictate part of the name, for example cash.</li><li>Listen for the number of matches, then swipe to the results.</li></ol></div>
+</li>
+<li class="item" data-search="favourites keep the tools you use every day on the favourites tab so you reach them in one or two swipes.">
+<h4 class="disc-h"><button type="button" class="disc" aria-expanded="false" aria-controls="p-guide-favourites"><span class="disc-t">Favourites</span><svg class="chev" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 9l6 6 6-6"/></svg></button></h4>
+<div class="panel" id="p-guide-favourites"><p>Keep the tools you use every day on the Favourites tab so you reach them in one or two swipes.</p><p class="how">How to use</p><ol><li>Go to All Features.</li><li>Long press a feature and choose Add to Favourite. With TalkBack, open the actions menu on the feature instead.</li><li>Open the Favourites tab to find it.</li></ol></div>
+</li>
+<li class="item" data-search="your own categories group features into folders with your own names. deleting a folder never deletes features, they go back to home.">
+<h4 class="disc-h"><button type="button" class="disc" aria-expanded="false" aria-controls="p-guide-your-own-categories"><span class="disc-t">Your own categories</span><svg class="chev" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 9l6 6 6-6"/></svg></button></h4>
+<div class="panel" id="p-guide-your-own-categories"><p>Group features into folders with your own names. Deleting a folder never deletes features, they go back to Home.</p><p class="how">How to use</p><ol><li>Open the menu and choose Customization.</li><li>Create a category and give it a name.</li><li>Move features into it, or rename and delete it later.</li></ol></div>
+</li>
+<li class="item" data-search="voice navigation open any feature by saying its name instead of searching the list.">
+<h4 class="disc-h"><button type="button" class="disc" aria-expanded="false" aria-controls="p-guide-voice-navigation"><span class="disc-t">Voice navigation</span><svg class="chev" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 9l6 6 6-6"/></svg></button></h4>
+<div class="panel" id="p-guide-voice-navigation"><p>Open any feature by saying its name instead of searching the list.</p><p class="how">How to use</p><ol><li>Open Settings, then Voice navigation, and turn it on.</li><li>Use the two-finger double tap shortcut to start listening.</li><li>Say the name of the feature you want.</li></ol></div>
+</li>
+<li class="item" data-search="menu the menu holds your profile, netra infinity tts, connect to windows, notifications, settings, video tutorials, help and feedback, and about.">
+<h4 class="disc-h"><button type="button" class="disc" aria-expanded="false" aria-controls="p-guide-menu"><span class="disc-t">Menu</span><svg class="chev" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 9l6 6 6-6"/></svg></button></h4>
+<div class="panel" id="p-guide-menu"><p>The menu holds your profile, Netra Infinity TTS, Connect to Windows, notifications, settings, video tutorials, help and feedback, and About.</p><p class="how">How to use</p><ol><li>Open the menu from the Home screen.</li><li>Choose an item.</li><li>App Tutorials opens step by step videos on our YouTube channel.</li></ol></div>
+</li>
+</ul></div>
+</div>
+<div class="group" id="g-camera">
+<h3 class="disc-h"><button type="button" class="disc disc-group" aria-expanded="false" aria-controls="p-g-camera"><span class="disc-t">Camera and reading<span class="sr">, </span><span class="count">8 features</span></span><svg class="chev" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 9l6 6 6-6"/></svg></button></h3>
+<div class="panel" id="p-g-camera"><p class="group-intro">Hear what the camera sees and read any printed text.</p><ul class="items">
+<li class="item" data-search="object detector point the camera and hear what is in front of you. works offline, and gives exact names when you are online.">
+<h4 class="disc-h"><button type="button" class="disc" aria-expanded="false" aria-controls="p-camera-object-detector"><span class="disc-t">Object Detector</span><svg class="chev" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 9l6 6 6-6"/></svg></button></h4>
+<div class="panel" id="p-camera-object-detector"><p>Point the camera and hear what is in front of you. Works offline, and gives exact names when you are online.</p><p class="how">How to use</p><ol><li>Open Object Detector.</li><li>Hold the phone at chest height with the back camera facing forward.</li><li>Turn slowly. Netra Plus speaks the names of things it finds.</li></ol></div>
+</li>
+<li class="item" data-search="image analyser describes a scene, reads the text in a photo or identifies objects, using gemini flash lite.">
+<h4 class="disc-h"><button type="button" class="disc" aria-expanded="false" aria-controls="p-camera-image-analyser"><span class="disc-t">Image Analyser<span class="sr">, </span><span class="tag">Premium</span></span><svg class="chev" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 9l6 6 6-6"/></svg></button></h4>
+<div class="panel" id="p-camera-image-analyser"><p>Describes a scene, reads the text in a photo or identifies objects, using Gemini Flash Lite.</p><p class="how">How to use</p><ol><li>Open Image Analyser.</li><li>Take a photo or choose one from your gallery.</li><li>Pick describe scene, extract text or identify objects, and listen to the result.</li></ol></div>
+</li>
+<li class="item" data-search="instant reader reads printed text aloud the moment the camera sees it. useful for letters, labels, menus and signs.">
+<h4 class="disc-h"><button type="button" class="disc" aria-expanded="false" aria-controls="p-camera-instant-reader"><span class="disc-t">Instant Reader</span><svg class="chev" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 9l6 6 6-6"/></svg></button></h4>
+<div class="panel" id="p-camera-instant-reader"><p>Reads printed text aloud the moment the camera sees it. Useful for letters, labels, menus and signs.</p><p class="how">How to use</p><ol><li>Open Instant Reader.</li><li>Hold the page about 30 cm from the back camera.</li><li>Keep still. Reading starts on its own, and you can translate the text.</li></ol></div>
+</li>
+<li class="item" data-search="document reader opens pdf and other documents and reads them with natural voices. scanned pages are read with ocr, and files stay in your offline library.">
+<h4 class="disc-h"><button type="button" class="disc" aria-expanded="false" aria-controls="p-camera-document-reader"><span class="disc-t">Document Reader</span><svg class="chev" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 9l6 6 6-6"/></svg></button></h4>
+<div class="panel" id="p-camera-document-reader"><p>Opens PDF and other documents and reads them with natural voices. Scanned pages are read with OCR, and files stay in your offline library.</p><p class="how">How to use</p><ol><li>Open Document Reader.</li><li>Choose a file from your phone.</li><li>Play, pause and move by page. The reader remembers where you stopped.</li></ol></div>
+</li>
+<li class="item" data-search="image ocr pulls the text out of photos and screenshots so you can read, copy or share it.">
+<h4 class="disc-h"><button type="button" class="disc" aria-expanded="false" aria-controls="p-camera-image-ocr"><span class="disc-t">Image OCR<span class="sr">, </span><span class="tag">Premium</span></span><svg class="chev" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 9l6 6 6-6"/></svg></button></h4>
+<div class="panel" id="p-camera-image-ocr"><p>Pulls the text out of photos and screenshots so you can read, copy or share it.</p><p class="how">How to use</p><ol><li>Open Image OCR.</li><li>Choose one or more images.</li><li>Listen to the text, or copy and share it.</li></ol></div>
+</li>
+<li class="item" data-search="cash reader identifies currency notes and keeps a running total as you count.">
+<h4 class="disc-h"><button type="button" class="disc" aria-expanded="false" aria-controls="p-camera-cash-reader"><span class="disc-t">Cash Reader</span><svg class="chev" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 9l6 6 6-6"/></svg></button></h4>
+<div class="panel" id="p-camera-cash-reader"><p>Identifies currency notes and keeps a running total as you count.</p><p class="how">How to use</p><ol><li>Open Cash Reader.</li><li>Lay one note flat in good light and hold the camera above it.</li><li>Listen for the value, then show the next note to add it to the total.</li></ol></div>
+</li>
+<li class="item" data-search="document scanner scans paper pages with spoken guidance and saves them as a pdf.">
+<h4 class="disc-h"><button type="button" class="disc" aria-expanded="false" aria-controls="p-camera-document-scanner"><span class="disc-t">Document Scanner</span><svg class="chev" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 9l6 6 6-6"/></svg></button></h4>
+<div class="panel" id="p-camera-document-scanner"><p>Scans paper pages with spoken guidance and saves them as a PDF.</p><p class="how">How to use</p><ol><li>Open Document Scanner.</li><li>Follow the spoken directions until the whole page is in view.</li><li>Capture each page, then save the PDF.</li></ol></div>
+</li>
+<li class="item" data-search="talking camera a selfie and portrait camera that tells you how to move until your face is centred.">
+<h4 class="disc-h"><button type="button" class="disc" aria-expanded="false" aria-controls="p-camera-talking-camera"><span class="disc-t">Talking Camera</span><svg class="chev" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 9l6 6 6-6"/></svg></button></h4>
+<div class="panel" id="p-camera-talking-camera"><p>A selfie and portrait camera that tells you how to move until your face is centred.</p><p class="how">How to use</p><ol><li>Open Talking Camera.</li><li>Hold the phone at arm&#x27;s length.</li><li>Move as the voice directs. The photo is taken when you are in frame.</li></ol></div>
+</li>
+</ul></div>
+</div>
+<div class="group" id="g-voice">
+<h3 class="disc-h"><button type="button" class="disc disc-group" aria-expanded="false" aria-controls="p-g-voice"><span class="disc-t">Voice and announcers<span class="sr">, </span><span class="count">8 features</span></span><svg class="chev" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 9l6 6 6-6"/></svg></button></h3>
+<div class="panel" id="p-g-voice"><p class="group-intro">Spoken alerts, dictation and recording.</p><ul class="items">
+<li class="item" data-search="time announcer speaks the time at regular intervals in studio recorded voices.">
+<h4 class="disc-h"><button type="button" class="disc" aria-expanded="false" aria-controls="p-voice-time-announcer"><span class="disc-t">Time Announcer</span><svg class="chev" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 9l6 6 6-6"/></svg></button></h4>
+<div class="panel" id="p-voice-time-announcer"><p>Speaks the time at regular intervals in studio recorded voices.</p><p class="how">How to use</p><ol><li>Open Time Announcer.</li><li>Choose how often you want to hear the time and pick a voice.</li><li>Turn it on. It keeps working when the app is closed.</li></ol></div>
+</li>
+<li class="item" data-search="battery announcer speaks the battery level and tells you when the charger is connected or removed, in a real human voice.">
+<h4 class="disc-h"><button type="button" class="disc" aria-expanded="false" aria-controls="p-voice-battery-announcer"><span class="disc-t">Battery Announcer</span><svg class="chev" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 9l6 6 6-6"/></svg></button></h4>
+<div class="panel" id="p-voice-battery-announcer"><p>Speaks the battery level and tells you when the charger is connected or removed, in a real human voice.</p><p class="how">How to use</p><ol><li>Open Battery Announcer.</li><li>Choose which events you want to hear.</li><li>Turn it on.</li></ol></div>
+</li>
+<li class="item" data-search="caller announcer speaks the caller&#x27;s name or number while the phone rings, so you know who is calling before you answer.">
+<h4 class="disc-h"><button type="button" class="disc" aria-expanded="false" aria-controls="p-voice-caller-announcer"><span class="disc-t">Caller Announcer</span><svg class="chev" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 9l6 6 6-6"/></svg></button></h4>
+<div class="panel" id="p-voice-caller-announcer"><p>Speaks the caller&#x27;s name or number while the phone rings, so you know who is calling before you answer.</p><p class="how">How to use</p><ol><li>Open Caller Announcer.</li><li>Allow phone and contacts access when asked.</li><li>Turn it on.</li></ol></div>
+</li>
+<li class="item" data-search="upi payment announcer speaks the amount and the sender when money arrives by upi. promotional messages are ignored.">
+<h4 class="disc-h"><button type="button" class="disc" aria-expanded="false" aria-controls="p-voice-upi-payment-announcer"><span class="disc-t">UPI Payment Announcer</span><svg class="chev" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 9l6 6 6-6"/></svg></button></h4>
+<div class="panel" id="p-voice-upi-payment-announcer"><p>Speaks the amount and the sender when money arrives by UPI. Promotional messages are ignored.</p><p class="how">How to use</p><ol><li>Open UPI Payment Announcer.</li><li>Give Netra Plus notification access when asked.</li><li>Turn it on. Payments from apps such as PhonePe and Google Pay are spoken.</li></ol></div>
+</li>
+<li class="item" data-search="voice typer continuous speech to text in more than 170 languages, with automatic punctuation. keeps listening until you stop it.">
+<h4 class="disc-h"><button type="button" class="disc" aria-expanded="false" aria-controls="p-voice-voice-typer"><span class="disc-t">Voice Typer</span><svg class="chev" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 9l6 6 6-6"/></svg></button></h4>
+<div class="panel" id="p-voice-voice-typer"><p>Continuous speech to text in more than 170 languages, with automatic punctuation. Keeps listening until you stop it.</p><p class="how">How to use</p><ol><li>Open Voice Typer and choose your language.</li><li>Start and speak normally.</li><li>Stop, then copy, share or export the text.</li></ol></div>
+</li>
+<li class="item" data-search="voice record a voice recorder for memos, with folders to keep recordings organised.">
+<h4 class="disc-h"><button type="button" class="disc" aria-expanded="false" aria-controls="p-voice-voice-record"><span class="disc-t">Voice Record</span><svg class="chev" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 9l6 6 6-6"/></svg></button></h4>
+<div class="panel" id="p-voice-voice-record"><p>A voice recorder for memos, with folders to keep recordings organised.</p><p class="how">How to use</p><ol><li>Open Voice Record.</li><li>Start recording and speak.</li><li>Stop, name the recording and choose a folder.</li></ol></div>
+</li>
+<li class="item" data-search="text to audio turns text into human-like speech with premium voices and saves it as an audio file.">
+<h4 class="disc-h"><button type="button" class="disc" aria-expanded="false" aria-controls="p-voice-text-to-audio"><span class="disc-t">Text To Audio<span class="sr">, </span><span class="tag">Premium</span></span><svg class="chev" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 9l6 6 6-6"/></svg></button></h4>
+<div class="panel" id="p-voice-text-to-audio"><p>Turns text into human-like speech with premium voices and saves it as an audio file.</p><p class="how">How to use</p><ol><li>Open Text To Audio.</li><li>Type or paste your text and choose a voice.</li><li>Listen, then save or share the audio.</li></ol></div>
+</li>
+<li class="item" data-search="netra infinity tts a text-to-speech engine that switches language mid-sentence without delay and reads each script correctly.">
+<h4 class="disc-h"><button type="button" class="disc" aria-expanded="false" aria-controls="p-voice-netra-infinity-tts"><span class="disc-t">Netra Infinity TTS</span><svg class="chev" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 9l6 6 6-6"/></svg></button></h4>
+<div class="panel" id="p-voice-netra-infinity-tts"><p>A text-to-speech engine that switches language mid-sentence without delay and reads each script correctly.</p><p class="how">How to use</p><ol><li>Open Netra Infinity TTS from the menu.</li><li>Choose the voices you want for each language.</li><li>To use it with TalkBack, select it in Android Settings, Text-to-speech output.</li></ol></div>
+</li>
+</ul></div>
+</div>
+<div class="group" id="g-ai">
+<h3 class="disc-h"><button type="button" class="disc disc-group" aria-expanded="false" aria-controls="p-g-ai"><span class="disc-t">AI, news and learning<span class="sr">, </span><span class="count">8 features</span></span><svg class="chev" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 9l6 6 6-6"/></svg></button></h3>
+<div class="panel" id="p-g-ai"><p class="group-intro">Ask questions, research topics and practise.</p><ul class="items">
+<li class="item" data-search="netra ai an ai assistant that helps with writing, explanations, planning and accessibility tasks.">
+<h4 class="disc-h"><button type="button" class="disc" aria-expanded="false" aria-controls="p-ai-netra-ai"><span class="disc-t">Netra AI<span class="sr">, </span><span class="tag">Premium</span></span><svg class="chev" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 9l6 6 6-6"/></svg></button></h4>
+<div class="panel" id="p-ai-netra-ai"><p>An AI assistant that helps with writing, explanations, planning and accessibility tasks.</p><p class="how">How to use</p><ol><li>Open Netra AI.</li><li>Type or dictate your question.</li><li>Listen to the answer and ask follow-up questions.</li></ol></div>
+</li>
+<li class="item" data-search="information hub research any topic, read long articles page by page with speech, and save them to an offline library.">
+<h4 class="disc-h"><button type="button" class="disc" aria-expanded="false" aria-controls="p-ai-information-hub"><span class="disc-t">Information HUB</span><svg class="chev" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 9l6 6 6-6"/></svg></button></h4>
+<div class="panel" id="p-ai-information-hub"><p>Research any topic, read long articles page by page with speech, and save them to an offline library.</p><p class="how">How to use</p><ol><li>Open Information HUB.</li><li>Search for a topic.</li><li>Open a result to read or listen, and save it for later.</li></ol></div>
+</li>
+<li class="item" data-search="news hub news built for screen reader users, with clear headlines and full stories read aloud.">
+<h4 class="disc-h"><button type="button" class="disc" aria-expanded="false" aria-controls="p-ai-news-hub"><span class="disc-t">News HUB<span class="sr">, </span><span class="tag">Premium</span></span><svg class="chev" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 9l6 6 6-6"/></svg></button></h4>
+<div class="panel" id="p-ai-news-hub"><p>News built for screen reader users, with clear headlines and full stories read aloud.</p><p class="how">How to use</p><ol><li>Open News HUB.</li><li>Choose a category.</li><li>Open a headline to read or listen to the story.</li></ol></div>
+</li>
+<li class="item" data-search="daily quiz an accessible daily quiz with 25 questions. download your scorecard and the questions to use offline.">
+<h4 class="disc-h"><button type="button" class="disc" aria-expanded="false" aria-controls="p-ai-daily-quiz"><span class="disc-t">Daily Quiz</span><svg class="chev" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 9l6 6 6-6"/></svg></button></h4>
+<div class="panel" id="p-ai-daily-quiz"><p>An accessible daily quiz with 25 questions. Download your scorecard and the questions to use offline.</p><p class="how">How to use</p><ol><li>Open Daily Quiz.</li><li>Answer each question from the list of choices.</li><li>Hear your score at the end and download it if you want.</li></ol></div>
+</li>
+<li class="item" data-search="netra image generator creates images from a description using ai.">
+<h4 class="disc-h"><button type="button" class="disc" aria-expanded="false" aria-controls="p-ai-netra-image-generator"><span class="disc-t">Netra Image Generator<span class="sr">, </span><span class="tag">Premium</span></span><svg class="chev" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 9l6 6 6-6"/></svg></button></h4>
+<div class="panel" id="p-ai-netra-image-generator"><p>Creates images from a description using AI.</p><p class="how">How to use</p><ol><li>Open Netra Image Generator.</li><li>Describe the picture you want.</li><li>Generate, then save or share it.</li></ol></div>
+</li>
+<li class="item" data-search="image generator create a picture from a description you type or speak. free, no account needed.">
+<h4 class="disc-h"><button type="button" class="disc" aria-expanded="false" aria-controls="p-ai-image-generator"><span class="disc-t">Image Generator</span><svg class="chev" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 9l6 6 6-6"/></svg></button></h4>
+<div class="panel" id="p-ai-image-generator"><p>Create a picture from a description you type or speak. Free, no account needed.</p><p class="how">How to use</p><ol><li>Open Image Generator.</li><li>Type or speak a description.</li><li>Generate, then save or share the picture.</li></ol></div>
+</li>
+<li class="item" data-search="code runner write and run html, css and javascript on your phone.">
+<h4 class="disc-h"><button type="button" class="disc" aria-expanded="false" aria-controls="p-ai-code-runner"><span class="disc-t">Code Runner</span><svg class="chev" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 9l6 6 6-6"/></svg></button></h4>
+<div class="panel" id="p-ai-code-runner"><p>Write and run HTML, CSS and JavaScript on your phone.</p><p class="how">How to use</p><ol><li>Open Code Runner.</li><li>Type or paste your code.</li><li>Run it and check the output.</li></ol></div>
+</li>
+<li class="item" data-search="computer shortcuts keyboard shortcuts for windows, mac and linux, in one searchable list.">
+<h4 class="disc-h"><button type="button" class="disc" aria-expanded="false" aria-controls="p-ai-computer-shortcuts"><span class="disc-t">Computer Shortcuts</span><svg class="chev" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 9l6 6 6-6"/></svg></button></h4>
+<div class="panel" id="p-ai-computer-shortcuts"><p>Keyboard shortcuts for Windows, Mac and Linux, in one searchable list.</p><p class="how">How to use</p><ol><li>Open Computer Shortcuts.</li><li>Choose a system or search for a task.</li><li>Swipe through the shortcuts.</li></ol></div>
+</li>
+</ul></div>
+</div>
+<div class="group" id="g-media">
+<h3 class="disc-h"><button type="button" class="disc disc-group" aria-expanded="false" aria-controls="p-g-media"><span class="disc-t">Books, radio and media<span class="sr">, </span><span class="count">4 features</span></span><svg class="chev" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 9l6 6 6-6"/></svg></button></h3>
+<div class="panel" id="p-g-media"><p class="group-intro">Free books, audio books, live radio and your own files.</p><ul class="items">
+<li class="item" data-search="netra ebooks free books in telugu, hindi, english and many more languages. read the summary, download as pdf or epub and read inside netra plus.">
+<h4 class="disc-h"><button type="button" class="disc" aria-expanded="false" aria-controls="p-media-netra-ebooks"><span class="disc-t">Netra eBooks<span class="sr">, </span><span class="tag">Premium</span></span><svg class="chev" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 9l6 6 6-6"/></svg></button></h4>
+<div class="panel" id="p-media-netra-ebooks"><p>Free books in Telugu, Hindi, English and many more languages. Read the summary, download as PDF or EPUB and read inside Netra Plus.</p><p class="how">How to use</p><ol><li>Open Netra eBooks.</li><li>Search by title, author or language.</li><li>Hear the summary, then download and read.</li></ol></div>
+</li>
+<li class="item" data-search="netra audio books free audio books in telugu, hindi, english and more. continues from where you stopped, with chapters, speed control and a sleep timer.">
+<h4 class="disc-h"><button type="button" class="disc" aria-expanded="false" aria-controls="p-media-netra-audio-books"><span class="disc-t">Netra Audio Books<span class="sr">, </span><span class="tag">Premium</span></span><svg class="chev" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 9l6 6 6-6"/></svg></button></h4>
+<div class="panel" id="p-media-netra-audio-books"><p>Free audio books in Telugu, Hindi, English and more. Continues from where you stopped, with chapters, speed control and a sleep timer.</p><p class="how">How to use</p><ol><li>Open Netra Audio Books.</li><li>Choose a book.</li><li>Play, move by chapter, change speed or set a sleep timer.</li></ol></div>
+</li>
+<li class="item" data-search="netra radio live radio stations by language and category. keeps playing in the background, with favourites and a sleep timer.">
+<h4 class="disc-h"><button type="button" class="disc" aria-expanded="false" aria-controls="p-media-netra-radio"><span class="disc-t">Netra Radio<span class="sr">, </span><span class="tag">Premium</span></span><svg class="chev" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 9l6 6 6-6"/></svg></button></h4>
+<div class="panel" id="p-media-netra-radio"><p>Live radio stations by language and category. Keeps playing in the background, with favourites and a sleep timer.</p><p class="how">How to use</p><ol><li>Open Netra Radio.</li><li>Choose a language or category.</li><li>Play a station and add it to favourites.</li></ol></div>
+</li>
+<li class="item" data-search="my player an accessible player for the audio and video files on your phone.">
+<h4 class="disc-h"><button type="button" class="disc" aria-expanded="false" aria-controls="p-media-my-player"><span class="disc-t">My Player</span><svg class="chev" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 9l6 6 6-6"/></svg></button></h4>
+<div class="panel" id="p-media-my-player"><p>An accessible player for the audio and video files on your phone.</p><p class="how">How to use</p><ol><li>Open My Player.</li><li>Choose a file.</li><li>Use the labelled controls to play, pause and skip.</li></ol></div>
+</li>
+</ul></div>
+</div>
+<div class="group" id="g-files">
+<h3 class="disc-h"><button type="button" class="disc disc-group" aria-expanded="false" aria-controls="p-g-files"><span class="disc-t">Documents and files<span class="sr">, </span><span class="count">7 features</span></span><svg class="chev" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 9l6 6 6-6"/></svg></button></h3>
+<div class="panel" id="p-g-files"><p class="group-intro">Create, convert, protect and send files.</p><ul class="items">
+<li class="item" data-search="document creator write styled text and save it as pdf, word, image or plain text.">
+<h4 class="disc-h"><button type="button" class="disc" aria-expanded="false" aria-controls="p-files-document-creator"><span class="disc-t">Document Creator</span><svg class="chev" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 9l6 6 6-6"/></svg></button></h4>
+<div class="panel" id="p-files-document-creator"><p>Write styled text and save it as PDF, Word, image or plain text.</p><p class="how">How to use</p><ol><li>Open Document Creator.</li><li>Type or paste your text and apply headings or styles.</li><li>Choose the file type and save.</li></ol></div>
+</li>
+<li class="item" data-search="pdf converter tools offline tools for pdf: pdf to word, excel, html or text, word or excel to pdf, merge and split.">
+<h4 class="disc-h"><button type="button" class="disc" aria-expanded="false" aria-controls="p-files-pdf-converter-tools"><span class="disc-t">PDF Converter Tools</span><svg class="chev" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 9l6 6 6-6"/></svg></button></h4>
+<div class="panel" id="p-files-pdf-converter-tools"><p>Offline tools for PDF: PDF to Word, Excel, HTML or text, Word or Excel to PDF, merge and split.</p><p class="how">How to use</p><ol><li>Open PDF Converter Tools.</li><li>Choose the conversion.</li><li>Pick your file and save the result.</li></ol></div>
+</li>
+<li class="item" data-search="image tools convert, resize and compress images, read text from images and combine images into one pdf.">
+<h4 class="disc-h"><button type="button" class="disc" aria-expanded="false" aria-controls="p-files-image-tools"><span class="disc-t">Image Tools</span><svg class="chev" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 9l6 6 6-6"/></svg></button></h4>
+<div class="panel" id="p-files-image-tools"><p>Convert, resize and compress images, read text from images and combine images into one PDF.</p><p class="how">How to use</p><ol><li>Open Image Tools.</li><li>Choose a tool.</li><li>Pick your images and save the result.</li></ol></div>
+</li>
+<li class="item" data-search="resume builder build a professional resume with screen reader friendly forms and get a print-ready pdf.">
+<h4 class="disc-h"><button type="button" class="disc" aria-expanded="false" aria-controls="p-files-resume-builder"><span class="disc-t">Resume Builder</span><svg class="chev" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 9l6 6 6-6"/></svg></button></h4>
+<div class="panel" id="p-files-resume-builder"><p>Build a professional resume with screen reader friendly forms and get a print-ready PDF.</p><p class="how">How to use</p><ol><li>Open Resume Builder.</li><li>Fill in each section.</li><li>Create the PDF and share it.</li></ol></div>
+</li>
+<li class="item" data-search="file protect &amp; unprotect add or remove a password on excel and csv files, offline.">
+<h4 class="disc-h"><button type="button" class="disc" aria-expanded="false" aria-controls="p-files-file-protect-unprotect"><span class="disc-t">File Protect &amp; Unprotect</span><svg class="chev" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 9l6 6 6-6"/></svg></button></h4>
+<div class="panel" id="p-files-file-protect-unprotect"><p>Add or remove a password on Excel and CSV files, offline.</p><p class="how">How to use</p><ol><li>Open File Protect &amp; Unprotect.</li><li>Choose a file.</li><li>Add or remove the password and save.</li></ol></div>
+</li>
+<li class="item" data-search="send files send files to anyone, anywhere, with end-to-end encryption.">
+<h4 class="disc-h"><button type="button" class="disc" aria-expanded="false" aria-controls="p-files-send-files"><span class="disc-t">Send files</span><svg class="chev" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 9l6 6 6-6"/></svg></button></h4>
+<div class="panel" id="p-files-send-files"><p>Send files to anyone, anywhere, with end-to-end encryption.</p><p class="how">How to use</p><ol><li>Open Send files.</li><li>Choose the files and the person to send to.</li><li>Send. The other person accepts the request to receive them.</li></ol></div>
+</li>
+<li class="item" data-search="connect to windows link netra plus with your windows computer using an access key.">
+<h4 class="disc-h"><button type="button" class="disc" aria-expanded="false" aria-controls="p-files-connect-to-windows"><span class="disc-t">Connect to Windows<span class="sr">, </span><span class="tag">Premium</span></span><svg class="chev" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 9l6 6 6-6"/></svg></button></h4>
+<div class="panel" id="p-files-connect-to-windows"><p>Link Netra Plus with your Windows computer using an access key.</p><p class="how">How to use</p><ol><li>Sign in to Netra Plus.</li><li>Open Connect to Windows from the menu and generate an access key.</li><li>Enter the key on your computer.</li></ol></div>
+</li>
+</ul></div>
+</div>
+<div class="group" id="g-editing">
+<h3 class="disc-h"><button type="button" class="disc disc-group" aria-expanded="false" aria-controls="p-g-editing"><span class="disc-t">Audio, video and screen<span class="sr">, </span><span class="count">3 features</span></span><svg class="chev" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 9l6 6 6-6"/></svg></button></h3>
+<div class="panel" id="p-g-editing"><p class="group-intro">Edit recordings and capture your screen.</p><ul class="items">
+<li class="item" data-search="audio tools trim, merge and mix audio files.">
+<h4 class="disc-h"><button type="button" class="disc" aria-expanded="false" aria-controls="p-editing-audio-tools"><span class="disc-t">Audio Tools</span><svg class="chev" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 9l6 6 6-6"/></svg></button></h4>
+<div class="panel" id="p-editing-audio-tools"><p>Trim, merge and mix audio files.</p><p class="how">How to use</p><ol><li>Open Audio Tools.</li><li>Choose trim, merge or mix.</li><li>Pick your files, set the start and end times, and save.</li></ol></div>
+</li>
+<li class="item" data-search="video tools cut and merge videos, add background audio and apply effects at exact times.">
+<h4 class="disc-h"><button type="button" class="disc" aria-expanded="false" aria-controls="p-editing-video-tools"><span class="disc-t">Video Tools</span><svg class="chev" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 9l6 6 6-6"/></svg></button></h4>
+<div class="panel" id="p-editing-video-tools"><p>Cut and merge videos, add background audio and apply effects at exact times.</p><p class="how">How to use</p><ol><li>Open Video Tools.</li><li>Choose a tool.</li><li>Pick your video, make the change and save.</li></ol></div>
+</li>
+<li class="item" data-search="screen record record your screen with system sound or the microphone. recordings are saved to movies, netra screen recorder.">
+<h4 class="disc-h"><button type="button" class="disc" aria-expanded="false" aria-controls="p-editing-screen-record"><span class="disc-t">Screen Record</span><svg class="chev" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 9l6 6 6-6"/></svg></button></h4>
+<div class="panel" id="p-editing-screen-record"><p>Record your screen with system sound or the microphone. Recordings are saved to Movies, Netra Screen Recorder.</p><p class="how">How to use</p><ol><li>Open Screen Record.</li><li>Choose system audio or microphone.</li><li>Start, and stop from the notification when you are done.</li></ol></div>
+</li>
+</ul></div>
+</div>
+<div class="group" id="g-daily">
+<h3 class="disc-h"><button type="button" class="disc disc-group" aria-expanded="false" aria-controls="p-g-daily"><span class="disc-t">Everyday tools<span class="sr">, </span><span class="count">6 features</span></span><svg class="chev" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 9l6 6 6-6"/></svg></button></h3>
+<div class="panel" id="p-g-daily"><p class="group-intro">Small tools for daily life.</p><ul class="items">
+<li class="item" data-search="netra plus navigator spoken guidance for walking indoors and outdoors, with nearby places and your saved places.">
+<h4 class="disc-h"><button type="button" class="disc" aria-expanded="false" aria-controls="p-daily-netra-plus-navigator"><span class="disc-t">Netra Plus Navigator<span class="sr">, </span><span class="tag">Premium</span></span><svg class="chev" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 9l6 6 6-6"/></svg></button></h4>
+<div class="panel" id="p-daily-netra-plus-navigator"><p>Spoken guidance for walking indoors and outdoors, with nearby places and your saved places.</p><p class="how">How to use</p><ol><li>Open Netra Plus Navigator and allow location access.</li><li>Search for a place, or choose a nearby or saved place.</li><li>Start and follow the spoken directions.</li></ol></div>
+</li>
+<li class="item" data-search="talking calculator a calculator that speaks every key and result and keeps a step by step history.">
+<h4 class="disc-h"><button type="button" class="disc" aria-expanded="false" aria-controls="p-daily-talking-calculator"><span class="disc-t">Talking Calculator</span><svg class="chev" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 9l6 6 6-6"/></svg></button></h4>
+<div class="panel" id="p-daily-talking-calculator"><p>A calculator that speaks every key and result and keeps a step by step history.</p><p class="how">How to use</p><ol><li>Open Talking Calculator.</li><li>Enter your sum. Each key is spoken.</li><li>Hear the result and review the history.</li></ol></div>
+</li>
+<li class="item" data-search="qr scanner and generate scan any qr code, or create your own to share.">
+<h4 class="disc-h"><button type="button" class="disc" aria-expanded="false" aria-controls="p-daily-qr-scanner-and-generate"><span class="disc-t">QR Scanner and Generate</span><svg class="chev" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 9l6 6 6-6"/></svg></button></h4>
+<div class="panel" id="p-daily-qr-scanner-and-generate"><p>Scan any QR code, or create your own to share.</p><p class="how">How to use</p><ol><li>Open QR Scanner and Generate.</li><li>Point the camera at a code to scan it, or choose Generate.</li><li>Open the link or share the code you made.</li></ol></div>
+</li>
+<li class="item" data-search="translator translate speech and text between more than 100 languages.">
+<h4 class="disc-h"><button type="button" class="disc" aria-expanded="false" aria-controls="p-daily-translator"><span class="disc-t">Translator<span class="sr">, </span><span class="tag">Premium</span></span><svg class="chev" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 9l6 6 6-6"/></svg></button></h4>
+<div class="panel" id="p-daily-translator"><p>Translate speech and text between more than 100 languages.</p><p class="how">How to use</p><ol><li>Open Translator.</li><li>Choose the two languages.</li><li>Speak or type, then listen to the translation.</li></ol></div>
+</li>
+<li class="item" data-search="currency converter convert between world currencies using live exchange rates.">
+<h4 class="disc-h"><button type="button" class="disc" aria-expanded="false" aria-controls="p-daily-currency-converter"><span class="disc-t">Currency Converter</span><svg class="chev" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 9l6 6 6-6"/></svg></button></h4>
+<div class="panel" id="p-daily-currency-converter"><p>Convert between world currencies using live exchange rates.</p><p class="how">How to use</p><ol><li>Open Currency Converter.</li><li>Choose the two currencies.</li><li>Enter an amount and hear the result.</li></ol></div>
+</li>
+<li class="item" data-search="whatsapp direct message send a whatsapp message to any number without saving the contact.">
+<h4 class="disc-h"><button type="button" class="disc" aria-expanded="false" aria-controls="p-daily-whatsapp-direct-message"><span class="disc-t">WhatsApp Direct Message</span><svg class="chev" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 9l6 6 6-6"/></svg></button></h4>
+<div class="panel" id="p-daily-whatsapp-direct-message"><p>Send a WhatsApp message to any number without saving the contact.</p><p class="how">How to use</p><ol><li>Open WhatsApp Direct Message.</li><li>Enter the phone number with country code.</li><li>Type your message and send. WhatsApp opens the chat.</li></ol></div>
+</li>
+</ul></div>
+</div>
+<div class="group" id="g-vault">
+<h3 class="disc-h"><button type="button" class="disc disc-group" aria-expanded="false" aria-controls="p-g-vault"><span class="disc-t">Notes and private vault<span class="sr">, </span><span class="count">3 features</span></span><svg class="chev" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 9l6 6 6-6"/></svg></button></h3>
+<div class="panel" id="p-g-vault"><p class="group-intro">Keep notes, links and passwords in one place.</p><ul class="items">
+<li class="item" data-search="note pad notes with folders and search, in high contrast.">
+<h4 class="disc-h"><button type="button" class="disc" aria-expanded="false" aria-controls="p-vault-note-pad"><span class="disc-t">Note Pad<span class="sr">, </span><span class="tag">Premium</span></span><svg class="chev" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 9l6 6 6-6"/></svg></button></h4>
+<div class="panel" id="p-vault-note-pad"><p>Notes with folders and search, in high contrast.</p><p class="how">How to use</p><ol><li>Open Note Pad.</li><li>Create a note or folder.</li><li>Search to find a note later.</li></ol></div>
+</li>
+<li class="item" data-search="link saver save web links and sort them into categories.">
+<h4 class="disc-h"><button type="button" class="disc" aria-expanded="false" aria-controls="p-vault-link-saver"><span class="disc-t">Link Saver<span class="sr">, </span><span class="tag">Premium</span></span><svg class="chev" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 9l6 6 6-6"/></svg></button></h4>
+<div class="panel" id="p-vault-link-saver"><p>Save web links and sort them into categories.</p><p class="how">How to use</p><ol><li>Open Link Saver.</li><li>Paste or share a link to Netra Plus.</li><li>Choose a category.</li></ol></div>
+</li>
+<li class="item" data-search="password saver store your passwords securely behind a lock.">
+<h4 class="disc-h"><button type="button" class="disc" aria-expanded="false" aria-controls="p-vault-password-saver"><span class="disc-t">Password Saver<span class="sr">, </span><span class="tag">Premium</span></span><svg class="chev" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 9l6 6 6-6"/></svg></button></h4>
+<div class="panel" id="p-vault-password-saver"><p>Store your passwords securely behind a lock.</p><p class="how">How to use</p><ol><li>Open Password Saver and unlock the vault.</li><li>Add a site, user name and password.</li><li>Open the entry when you need it.</li></ol></div>
+</li>
+</ul></div>
+</div>
+    </div>
+  </div>
+</section>
+
+<section id="plans" class="sec" aria-labelledby="plans-h">
+  <div class="wrap">
+    <h2 id="plans-h" tabindex="-1">Plans</h2>
+    <p>Netra Plus is free to download and most features are free. Premium opens every feature, with no daily limits.</p>
+
+    <h3 class="sub">Premium plans</h3>
+    <ul class="plans">
+      <li class="plan"><p class="plan-n">1 month</p><p>Billed every month.</p></li>
+      <li class="plan"><p class="plan-n">3 months</p><p>Billed every 3 months.</p></li>
+      <li class="plan"><p class="plan-n">6 months</p><p>Billed every 6 months.</p></li>
+      <li class="plan plan-best"><p class="plan-n">1 year <span class="tag">Best value</span></p><p>Billed every year.</p></li>
+    </ul>
+    <p class="note">Prices are shown in the app in your local currency, straight from Google Play.</p>
+
+    <ul class="items plan-info">
+      <li class="item">
+        <h3 class="disc-h"><button type="button" class="disc" aria-expanded="false" aria-controls="p-plan-includes"><span class="disc-t">What Premium includes</span><svg class="chev" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 9l6 6 6-6"/></svg></button></h3>
+        <div class="panel" id="p-plan-includes"><p>Every free feature, plus:</p><ul class="cols"><li>Connect to Windows</li><li>Image Analyser</li><li>Image OCR</li><li>Link Saver</li><li>Netra AI</li><li>Netra Audio Books</li><li>Netra Image Generator</li><li>Netra Plus Navigator</li><li>Netra Radio</li><li>Netra eBooks</li><li>News HUB</li><li>Note Pad</li><li>Password Saver</li><li>Text To Audio</li><li>Translator</li></ul><p>No daily limits on any feature.</p></div>
+      </li>
+      <li class="item">
+        <h3 class="disc-h"><button type="button" class="disc" aria-expanded="false" aria-controls="p-plan-how"><span class="disc-t">How to subscribe</span><svg class="chev" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 9l6 6 6-6"/></svg></button></h3>
+        <div class="panel" id="p-plan-how"><ol><li>Open Netra Plus and go to the Premium tab.</li><li>Choose See plans.</li><li>Choose a plan. Google Play asks you to confirm the payment.</li><li>Premium opens straight away. If the payment is still processing, it opens on its own when Google Play confirms it.</li></ol></div>
+      </li>
+      <li class="item">
+        <h3 class="disc-h"><button type="button" class="disc" aria-expanded="false" aria-controls="p-plan-cancel"><span class="disc-t">Cancel, renew or restore</span><svg class="chev" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 9l6 6 6-6"/></svg></button></h3>
+        <div class="panel" id="p-plan-cancel"><p>You pay through Google Play. A plan renews at the end of each period until you cancel it in Google Play, under Payments and subscriptions.</p><p>New phone or reinstalled the app? Open the plans screen and choose Restore my purchase.</p></div>
+      </li>
+    </ul>
+    <p><a class="btn" href="https://play.google.com/store/apps/details?id=com.netrax.plus" target="_blank" rel="noopener">Get Netra Plus<span class="sr"> on Google Play, opens in a new tab</span></a></p>
+  </div>
+</section>
+
+<section id="developer" class="sec" aria-labelledby="developer-h">
+  <div class="wrap">
+    <h2 id="developer-h" tabindex="-1">Developer</h2>
+    <p class="lead-s">Netra Plus is made by <strong>Netra X Developers</strong>, founded by <strong>Arun Kumar</strong>, a visually impaired developer from Andhra Pradesh, India.</p>
+    <p>We build apps that blind people can use on their own, without asking for help. Every feature is tested with TalkBack before it ships. We welcome partnerships and ideas that improve accessibility.</p>
+
+    <h3 class="sub">Our other apps</h3>
+    <ul class="apps">
+      <li><img src="talking-calculator-logo.jpeg" alt="" width="56" height="56"><div><p class="app-n">Talking Calculator Vision+</p><p>A calculator that speaks every number and result.</p><a href="https://play.google.com/store/apps/details?id=com.talkingcalculator" target="_blank" rel="noopener">Talking Calculator Vision+ on Google Play<span class="sr">, opens in a new tab</span></a></div></li>
+      <li><img src="shortcuts-logo.svg" alt="" width="56" height="56"><div><p class="app-n">Computer Shortcuts+ Pro</p><p>Keyboard shortcuts for screen reader users.</p><a href="https://play.google.com/store/apps/details?id=com.netrax.shortcuthubplus" target="_blank" rel="noopener">Computer Shortcuts+ Pro on Google Play<span class="sr">, opens in a new tab</span></a></div></li>
+      <li><img src="interest-calculator-logo.jpeg" alt="" width="56" height="56"><div><p class="app-n">Interest Calculator</p><p>Simple and compound interest, fully accessible.</p><a href="https://play.google.com/store/apps/details?id=com.netrax.interestcalculator" target="_blank" rel="noopener">Interest Calculator on Google Play<span class="sr">, opens in a new tab</span></a></div></li>
+    </ul>
+
+    <h3 class="sub">Follow us</h3>
+    <ul class="links">
+      <li><a href="https://youtube.com/@netraxinnovations" target="_blank" rel="noopener">YouTube tutorials<span class="sr">, opens in a new tab</span></a></li>
+      <li><a href="https://whatsapp.com/channel/0029Vb7gud0KGGGHWMFCzd2b" target="_blank" rel="noopener">WhatsApp channel<span class="sr">, opens in a new tab</span></a></li>
+      <li><a href="https://t.me/Netraplus" target="_blank" rel="noopener">Telegram channel<span class="sr">, opens in a new tab</span></a></li>
+    </ul>
+  </div>
+</section>
+
+<section id="contact" class="sec" aria-labelledby="contact-h">
+  <div class="wrap">
+    <h2 id="contact-h" tabindex="-1">Contact</h2>
+    <p>Email <a href="mailto:netraplushelpdesk@gmail.com">netraplushelpdesk@gmail.com</a>, or send a message here.</p>
+    <form id="contact-form" novalidate>
+      <div class="field">
+        <label for="from_name">Your name</label>
+        <input id="from_name" name="from_name" type="text" autocomplete="name" required aria-describedby="from_name-err">
+        <p class="err" id="from_name-err"></p>
+      </div>
+      <div class="field">
+        <label for="from_email">Email</label>
+        <input id="from_email" name="from_email" type="email" autocomplete="email" required aria-describedby="from_email-err">
+        <p class="err" id="from_email-err"></p>
+      </div>
+      <div class="field">
+        <label for="message">Message</label>
+        <textarea id="message" name="message" rows="5" required aria-describedby="message-err"></textarea>
+        <p class="err" id="message-err"></p>
+      </div>
+      <button class="btn" type="submit">Send message</button>
+      <p id="form-status" class="form-status" role="status"></p>
+    </form>
+  </div>
+</section>
+
+<section id="policies" class="sec" aria-labelledby="policies-h">
+  <div class="wrap">
+    <h2 id="policies-h" tabindex="-1">Policies</h2>
+    <ul class="items">
+      <li class="item" id="privacy">
+        <h3 class="disc-h"><button type="button" class="disc" aria-expanded="false" aria-controls="p-privacy"><span class="disc-t">Privacy policy</span><svg class="chev" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 9l6 6 6-6"/></svg></button></h3>
+        <div class="panel prose" id="p-privacy">
+          <p>Last updated 16 November 2026. This policy covers the Netra Plus app and this website, run by Netra X Developers.</p>
+          <h4>What we collect</h4>
+          <ul>
+            <li>Your name and email, only when you sign in or write to us.</li>
+            <li>Anonymous usage data and crash reports, to find and fix problems.</li>
+            <li>Your device model and Android version, to keep the app stable.</li>
+          </ul>
+          <h4>Permissions the app asks for</h4>
+          <p>Each permission is requested only when you open the feature that needs it, and you can refuse or remove it in Android settings.</p>
+          <ul>
+            <li>Camera: Object Detector, Instant Reader, Cash Reader, scanners and Talking Camera.</li>
+            <li>Microphone: Voice Typer, Voice Record, Translator and voice navigation.</li>
+            <li>Location: Netra Plus Navigator.</li>
+            <li>Phone, call log and contacts: Caller Announcer, to speak who is calling.</li>
+            <li>Notification access: UPI Payment Announcer, to speak incoming payments.</li>
+            <li>Files and media: reading, converting and saving your documents, audio and video.</li>
+          </ul>
+          <h4>How we use it</h4>
+          <p>To run and improve the app, answer your support requests, keep your account and subscription working, and prevent misuse. We do not sell your data.</p>
+          <h4>Services we use</h4>
+          <ul>
+            <li>Google Play, for installs, updates and subscription payments.</li>
+            <li>Firebase, for sign-in, data storage and crash reports.</li>
+            <li>AI services such as Google Gemini, for features like Image Analyser and Netra AI. Photos or text you send to these features are processed to give you the answer.</li>
+          </ul>
+          <h4>Security and keeping data</h4>
+          <p>We protect your data with technical and organisational safeguards and keep it only as long as needed. No system is completely secure.</p>
+          <h4>Children</h4>
+          <p>The app is not directed at children under 13, and we do not knowingly collect their data. If we learn we have, we delete it.</p>
+          <h4>Your rights</h4>
+          <p>You can ask us to show, correct or delete your data by emailing netraplushelpdesk@gmail.com.</p>
+          <h4>Changes</h4>
+          <p>When this policy changes, we update the date at the top.</p>
+        </div>
+      </li>
+      <li class="item" id="terms">
+        <h3 class="disc-h"><button type="button" class="disc" aria-expanded="false" aria-controls="p-terms"><span class="disc-t">Terms of use</span><svg class="chev" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 9l6 6 6-6"/></svg></button></h3>
+        <div class="panel prose" id="p-terms">
+          <p>By installing or using Netra Plus you agree to these terms. If you do not agree, please do not use the app.</p>
+          <h4>Using the app</h4>
+          <p>Use Netra Plus lawfully and without harming others or the service. Do not reverse engineer, copy or resell the app or its content.</p>
+          <h4>Assistive tool, not a guarantee</h4>
+          <p>Netra Plus helps you, but AI and camera results can be wrong. Do not rely on it alone for safety, navigation in dangerous places, medicine or money decisions.</p>
+          <h4>Accounts and subscriptions</h4>
+          <p>Keep your sign-in details private. Premium is billed and renewed by Google Play under Google Play's terms, and you cancel it in Google Play.</p>
+          <h4>Ownership</h4>
+          <p>The app, its design and content belong to Netra X Developers or its licensors.</p>
+          <h4>Liability</h4>
+          <p>To the extent the law allows, Netra X Developers is not liable for indirect or consequential loss from using or being unable to use the app.</p>
+          <h4>Other services</h4>
+          <p>Links and content from other services are their responsibility, not ours.</p>
+          <h4>Ending access</h4>
+          <p>We may suspend access for serious misuse of these terms.</p>
+          <h4>Law</h4>
+          <p>These terms are governed by the laws of India.</p>
+          <h4>Questions</h4>
+          <p>Email netraplushelpdesk@gmail.com.</p>
+        </div>
+      </li>
+      <li class="item" id="accessibility">
+        <h3 class="disc-h"><button type="button" class="disc" aria-expanded="false" aria-controls="p-accessibility"><span class="disc-t">Accessibility statement</span><svg class="chev" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 9l6 6 6-6"/></svg></button></h3>
+        <div class="panel prose" id="p-accessibility">
+          <p>Netra Plus and this website are built for blind and low vision people first. We aim to meet WCAG 2.2 level AA.</p>
+          <h4>On this website</h4>
+          <ul>
+            <li>Headings mark every section, and the Sections menu moves focus straight to the section you choose.</li>
+            <li>Each feature opens on its own, so you only hear what you asked for.</li>
+            <li>Light, dark and high contrast follow your device settings. Text can be enlarged to 200% or more.</li>
+            <li>Animation is light and turns off when your device asks for reduced motion.</li>
+          </ul>
+          <h4>In the app</h4>
+          <p>Every screen is tested with TalkBack. Results are spoken, and features can be opened by voice.</p>
+          <h4>Tell us about a barrier</h4>
+          <p>If something does not work with your screen reader, email netraplushelpdesk@gmail.com with the page or screen and what happened. We treat these reports first.</p>
+        </div>
+      </li>
+    </ul>
+  </div>
+</section>
+
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <p>&copy; <span id="year">2026</span> Netra X Developers</p>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4.4.1/dist/email.min.js" defer></script>
+<script src="script.js" defer></script>
 </body>
 </html>
