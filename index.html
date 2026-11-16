@@ -16,7 +16,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=b198180c">
+<link rel="stylesheet" href="style.css?v=1c5fa978">
 <script>document.documentElement.classList.add('js');</script>
 </head>
 <body>
@@ -342,9 +342,11 @@
         <div class="panel" id="p-plan-1-month">
           <ul class="plan-facts">
             <li>Every premium feature, with no daily limits.</li>
-            <li>Paid through our secure payment gateway, renewed every month until you cancel.</li>
+            <li>Paid once on the secure Razorpay payment page.</li>
+            <li>Does not renew by itself. Premium ends on the expiry date shown after payment.</li>
           </ul>
-          <p><button type="button" class="btn" data-plan="1 month">Subscribe to 1 month</button></p>
+          <p class="price" data-price-for="1m" hidden></p>
+          <p><button type="button" class="btn" data-plan="1 month" data-plan-key="1m">Subscribe to 1 month</button></p>
         </div>
       </li>
       <li class="item">
@@ -352,9 +354,11 @@
         <div class="panel" id="p-plan-3-months">
           <ul class="plan-facts">
             <li>Every premium feature, with no daily limits.</li>
-            <li>Paid through our secure payment gateway, renewed every 3 months until you cancel.</li>
+            <li>Paid once on the secure Razorpay payment page.</li>
+            <li>Does not renew by itself. Premium ends on the expiry date shown after payment.</li>
           </ul>
-          <p><button type="button" class="btn" data-plan="3 months">Subscribe to 3 months</button></p>
+          <p class="price" data-price-for="3m" hidden></p>
+          <p><button type="button" class="btn" data-plan="3 months" data-plan-key="3m">Subscribe to 3 months</button></p>
         </div>
       </li>
       <li class="item">
@@ -362,9 +366,11 @@
         <div class="panel" id="p-plan-6-months">
           <ul class="plan-facts">
             <li>Every premium feature, with no daily limits.</li>
-            <li>Paid through our secure payment gateway, renewed every 6 months until you cancel.</li>
+            <li>Paid once on the secure Razorpay payment page.</li>
+            <li>Does not renew by itself. Premium ends on the expiry date shown after payment.</li>
           </ul>
-          <p><button type="button" class="btn" data-plan="6 months">Subscribe to 6 months</button></p>
+          <p class="price" data-price-for="6m" hidden></p>
+          <p><button type="button" class="btn" data-plan="6 months" data-plan-key="6m">Subscribe to 6 months</button></p>
         </div>
       </li>
       <li class="item">
@@ -372,13 +378,15 @@
         <div class="panel" id="p-plan-1-year">
           <ul class="plan-facts">
             <li>Every premium feature, with no daily limits.</li>
-            <li>Paid through our secure payment gateway, renewed every year until you cancel.</li>
+            <li>Paid once on the secure Razorpay payment page.</li>
+            <li>Does not renew by itself. Premium ends on the expiry date shown after payment.</li>
           </ul>
-          <p><button type="button" class="btn" data-plan="1 year">Subscribe to 1 year</button></p>
+          <p class="price" data-price-for="1y" hidden></p>
+          <p><button type="button" class="btn" data-plan="1 year" data-plan-key="1y">Subscribe to 1 year</button></p>
         </div>
       </li>
     </ul>
-    <p class="note">The price is shown on the payment page before you pay.</p>
+    <p class="note">The price is shown before you pay.</p>
 
     <ul class="items plan-info">
       <li class="item">
@@ -387,11 +395,11 @@
       </li>
       <li class="item">
         <h3 class="disc-h"><button type="button" class="disc" aria-expanded="false" aria-controls="p-plan-how"><span class="disc-t">How to subscribe</span><svg class="chev" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 9l6 6 6-6"/></svg></button></h3>
-        <div class="panel" id="p-plan-how"><ol><li>Choose a plan above and press Subscribe.</li><li>Send us the email you use to sign in to Netra Plus.</li><li>Pay through our payment gateway.</li><li>Premium turns on for that account once the payment is confirmed, and the app shows the days left.</li></ol></div>
+        <div class="panel" id="p-plan-how"><ol><li>Open a plan above and press Subscribe.</li><li>Enter the email you use, or will use, to sign in to the Netra Plus app, and tick both boxes.</li><li>Pay on the secure Razorpay page. It opens on this page.</li><li>You see your plan and exact expiry date. Sign in to Netra Plus with that email and Premium is on.</li></ol></div>
       </li>
       <li class="item">
-        <h3 class="disc-h"><button type="button" class="disc" aria-expanded="false" aria-controls="p-plan-cancel"><span class="disc-t">Cancel, renew, refunds and restore</span><svg class="chev" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 9l6 6 6-6"/></svg></button></h3>
-        <div class="panel" id="p-plan-cancel"><p><strong>Cancel:</strong> you can cancel your subscription at any time in the payment gateway. Premium stays on until the end of the period you paid for.</p><p><strong>Renew:</strong> the plan renews at the end of each period until you cancel it.</p><p><strong>Refunds:</strong> payments are not refunded, including when you cancel part way through a period.</p><p><strong>Restore:</strong> Premium belongs to your Netra Plus account. On a new phone, sign in with the same email and Premium comes back on its own.</p></div>
+        <h3 class="disc-h"><button type="button" class="disc" aria-expanded="false" aria-controls="p-plan-cancel"><span class="disc-t">Renew, refunds and restore</span><svg class="chev" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 9l6 6 6-6"/></svg></button></h3>
+        <div class="panel" id="p-plan-cancel"><p><strong>Renew:</strong> plans do not renew automatically, so you are never charged again without asking. Premium ends on the expiry date. To continue, buy a plan again after it ends.</p><p><strong>Cancel:</strong> there is nothing to cancel, because nothing renews.</p><p><strong>Refunds:</strong> payments are not refunded.</p><p><strong>Restore:</strong> Premium belongs to the email you paid with. On a new phone, sign in to Netra Plus with that email and Premium comes back on its own.</p></div>
       </li>
     </ul>
   </div>
@@ -474,7 +482,7 @@
           <h4>Services we use</h4>
           <ul>
             <li>Google Play, for installs and updates.</li>
-            <li>A payment gateway, for Premium payments. Your card, UPI and bank details are handled by the gateway.</li>
+            <li>Razorpay, for Premium payments made on this website. Your card, UPI and bank details go to Razorpay, not to us. We keep your email, plan, payment ID and expiry date.</li>
             <li>Firebase, for sign-in, data storage and crash reports.</li>
             <li>AI services such as Google Gemini, for features like Image Analyser and Netra AI. Photos or text you send to these features are processed to give you the answer.</li>
           </ul>
@@ -497,7 +505,15 @@
           <h4>Assistive tool, not a guarantee</h4>
           <p>Netra Plus helps you, but AI and camera results can be wrong. Do not rely on it alone for safety, navigation in dangerous places, medicine or money decisions.</p>
           <h4>Accounts and subscriptions</h4>
-          <p>Keep your sign-in details private. Premium is paid through our payment gateway and renews each period until you cancel it there. You can cancel at any time, but payments are not refunded.</p>
+          <p>Keep your sign-in details private.</p>
+          <h4>Premium bought on this website</h4>
+          <ul>
+            <li>Premium is linked only to the email you enter when you pay. You must sign in to the Netra Plus app with exactly that email to use it.</li>
+            <li>Check the email before you pay. If you enter a wrong email, or sign in with a different one, Netra Plus is not responsible, Premium is not moved to another account, and no refund is given.</li>
+            <li>Each plan is paid once through Razorpay for a fixed period. It does not renew automatically and ends on the expiry date shown after payment.</li>
+            <li>You cannot buy a new plan while Premium is active on that email.</li>
+            <li>All payments are final and are not refunded, except where the law requires it.</li>
+          </ul>
           <h4>Ownership</h4>
           <p>The app, its design and content belong to Netra X Developers or its licensors.</p>
           <h4>Liability</h4>
@@ -533,6 +549,45 @@
   </div>
 </section>
 
+<dialog id="pay-dialog" class="pay" aria-labelledby="pay-title">
+  <div id="pay-form-view">
+    <h2 id="pay-title" class="pay-title">Subscribe</h2>
+    <p id="pay-summary" class="pay-summary"></p>
+    <p id="pay-demo" class="pay-demo" hidden>Preview mode. No payment is taken.</p>
+    <form id="pay-form" novalidate>
+      <div class="field">
+        <label for="pay-email">Netra Plus sign-in email</label>
+        <input id="pay-email" name="email" type="email" autocomplete="email" inputmode="email" required aria-describedby="pay-email-err pay-email-note">
+        <p class="err" id="pay-email-err"></p>
+      </div>
+      <div class="field">
+        <label for="pay-email2">Type the email again</label>
+        <input id="pay-email2" name="email2" type="email" autocomplete="email" inputmode="email" required aria-describedby="pay-email2-err">
+        <p class="err" id="pay-email2-err"></p>
+      </div>
+      <p class="pay-note" id="pay-email-note">You must sign in to the Netra Plus app with this same email. Premium works only on this email. If the email is wrong, Netra Plus is not responsible and no refund is given.</p>
+      <fieldset class="checks">
+        <legend>Before you pay</legend>
+        <div class="check"><input type="checkbox" id="pay-agree-email"><label for="pay-agree-email">I will sign in to Netra Plus with this email.</label></div>
+        <div class="check"><input type="checkbox" id="pay-agree-terms"><label for="pay-agree-terms">I agree to the Terms of use. Payments are not refunded.</label></div>
+      </fieldset>
+      <p class="pay-hint" id="pay-hint">Tick both boxes to turn on the Subscribe button.</p>
+      <p class="form-status" id="pay-status" role="status"></p>
+      <div class="pay-actions">
+        <button type="submit" class="btn" id="pay-submit" disabled aria-describedby="pay-hint">Subscribe</button>
+        <button type="button" class="btn btn-quiet" data-pay-close>Cancel</button>
+      </div>
+    </form>
+  </div>
+  <div id="pay-result-view" hidden>
+    <h2 id="pay-result-title" class="pay-title" tabindex="-1"></h2>
+    <p id="pay-result-text"></p>
+    <dl class="pay-details" id="pay-result-details"></dl>
+    <p id="pay-result-next" class="pay-note"></p>
+    <div class="pay-actions"><button type="button" class="btn" data-pay-close>Done</button></div>
+  </div>
+</dialog>
+
 </main>
 
 <footer class="foot">
@@ -542,6 +597,6 @@
 </footer>
 
 <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4.4.1/dist/email.min.js" defer></script>
-<script src="script.js?v=4ae7b3db" defer></script>
+<script src="script.js?v=50c3bd74" defer></script>
 </body>
 </html>

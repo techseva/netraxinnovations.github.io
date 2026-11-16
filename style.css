@@ -246,3 +246,30 @@ input:focus-visible, textarea:focus-visible { border-color: var(--focus); outlin
 .clock time { color: var(--text); font-weight: 700; }
 .clock-zone { font-size: .95rem; }
 .dock span { text-align: center; line-height: 1.15; }
+
+/* Subscribe dialog */
+.price { font-size: 1.2rem; font-weight: 700; margin-bottom: .75rem; }
+.pay {
+  width: min(560px, calc(100vw - 24px)); max-height: calc(100dvh - 24px); overflow: auto;
+  padding: 1.25rem 1.1rem 1rem; border: 2px solid var(--accent); border-radius: 18px;
+  background: var(--surface); color: var(--text);
+}
+.pay::backdrop { background: rgb(0 0 0 / .6); }
+.pay[open] { animation: reveal .22s var(--ease); }
+.pay-title { font-size: 1.5rem; margin-bottom: .5rem; }
+.pay-summary { color: var(--muted); }
+.pay-demo { font-weight: 700; padding: .5rem .75rem; border: 2px dashed var(--accent); border-radius: 10px; }
+.pay-note { padding: .75rem .9rem; background: var(--soft); border-radius: 12px; font-size: 1rem; }
+.checks { border: 0; padding: 0; margin: 0 0 .75rem; }
+.checks legend { font-weight: 700; margin-bottom: .4rem; padding: 0; }
+.check { display: flex; align-items: flex-start; gap: .75rem; padding: .55rem 0; }
+.check input { width: 26px; height: 26px; min-height: 0; margin: 0; flex: none; accent-color: var(--accent); cursor: pointer; }
+.check label { cursor: pointer; }
+.pay-hint { color: var(--muted); font-size: 1rem; margin-bottom: .25rem; }
+.pay-actions { display: flex; flex-wrap: wrap; gap: .75rem; margin-top: .5rem; }
+.btn-quiet { background: transparent; color: var(--text); border-color: var(--line); }
+.btn[disabled] { opacity: .55; cursor: not-allowed; }
+.pay-details { display: grid; grid-template-columns: max-content 1fr; gap: .4rem 1rem; margin: 0 0 1rem; }
+.pay-details dt { font-weight: 700; }
+.pay-details dd { margin: 0; min-width: 0; overflow-wrap: anywhere; }
+@media (max-width: 420px) { .pay-details { grid-template-columns: 1fr; } .pay-details dd { margin-bottom: .4rem; } }

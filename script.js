@@ -117,9 +117,192 @@
   const form = document.getElementById('contact-form');
   const formStatus = document.getElementById('form-status');
 
-  /* Subscribe: fill the contact form with the chosen plan and move there. */
+  /* Subscribe with Razorpay.
+     PAY_API is the netraPay Cloud Function address. While it is empty, Subscribe falls back to the
+     contact form, and ?demo=1 shows the whole flow without taking any payment. */
+  const PAY_API = '';
+  const DEMO = !PAY_API && new URLSearchParams(location.search).get('demo') === '1';
+  const payDialog = document.getElementById('pay-dialog');
+  const payForm = document.getElementById('pay-form');
+  const payEmail = document.getElementById('pay-email');
+  const payEmail2 = document.getElementById('pay-email2');
+  const agreeEmail = document.getElementById('pay-agree-email');
+  const agreeTerms = document.getElementById('pay-agree-terms');
+  const paySubmit = document.getElementById('pay-submit');
+  const payStatus = document.getElementById('pay-status');
+  const formView = document.getElementById('pay-form-view');
+  const resultView = document.getElementById('pay-result-view');
+  let payPlan = null;
+  let payOpener = null;
+  let handingOff = false;
+  let prices = {};
+
+  const rupees = (paise) => '₹' + (paise / 100).toLocaleString('en-IN', { maximumFractionDigits: 2 });
+  const longDate = (ms) => new Intl.DateTimeFormat(undefined, {
+    weekday: 'long', day: 'numeric', month: 'long', year: 'numeric', hour: 'numeric', minute: '2-digit', timeZoneName: 'short',
+  }).format(new Date(ms));
+
+  const api = async (path, body) => {
+    const response = await fetch(PAY_API.replace(/\/$/, '') + path, body
+      ? { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) }
+      : { method: 'GET' });
+    const data = await response.json().catch(() => ({}));
+    if (!response.ok) throw new Error(data.message || 'The payment service did not answer. Try again in a minute.');
+    return data;
+  };
+
+  if (PAY_API) {
+    api('/plans').then((data) => {
+      data.plans.forEach((p) => {
+        prices[p.key] = p.amount;
+        const el = document.querySelector(`[data-price-for="${p.key}"]`);
+        if (el) { el.textContent = 'Price: ' + rupees(p.amount); el.hidden = false; }
+      });
+    }).catch(() => {});
+  }
+
+  const updateSubmit = () => { paySubmit.disabled = !(agreeEmail.checked && agreeTerms.checked); };
+  agreeEmail.addEventListener('change', updateSubmit);
+  agreeTerms.addEventListener('change', updateSubmit);
+
+  const openPay = (button) => {
+    payPlan = { key: button.dataset.planKey, label: button.dataset.plan };
+    payOpener = button;
+    payForm.reset();
+    ['pay-email-err', 'pay-email2-err'].forEach((id) => { document.getElementById(id).textContent = ''; });
+    [payEmail, payEmail2].forEach((f) => f.removeAttribute('aria-invalid'));
+    payStatus.textContent = '';
+    updateSubmit();
+    document.getElementById('pay-title').textContent = 'Subscribe to ' + payPlan.label;
+    document.getElementById('pay-summary').textContent = 'Netra Plus Premium, ' + payPlan.label +
+      (prices[payPlan.key] ? ', ' + rupees(prices[payPlan.key]) : '') + '. Paid once, no automatic renewal.';
+    document.getElementById('pay-demo').hidden = !DEMO;
+    formView.hidden = false;
+    resultView.hidden = true;
+    if (!payDialog.open) payDialog.showModal();
+    payEmail.focus();
+  };
+
+  const showResult = (title, text, details, next) => {
+    formView.hidden = true;
+    resultView.hidden = false;
+    document.getElementById('pay-result-title').textContent = title;
+    document.getElementById('pay-result-text').textContent = text;
+    const dl = document.getElementById('pay-result-details');
+    dl.replaceChildren();
+    details.forEach(([term, value]) => {
+      const dt = document.createElement('dt'); dt.textContent = term;
+      const dd = document.createElement('dd'); dd.textContent = value;
+      dl.append(dt, dd);
+    });
+    document.getElementById('pay-result-next').textContent = next || '';
+    handingOff = false;
+    if (!payDialog.open) payDialog.showModal();
+    document.getElementById('pay-result-title').focus();
+  };
+
+  const showSuccess = (r) => showResult(
+    'Subscription successful',
+    'Your Netra Plus Premium is active.',
+    [['Sign-in email', r.email], ['Plan', 'Netra Plus Premium, ' + r.plan], ['Starts', longDate(r.startsAt)], ['Expires on', longDate(r.expiresAt)]],
+    'Open the Netra Plus app and sign in with ' + r.email + '. Premium turns on within a minute and ends on the expiry date. A receipt from Razorpay is sent to your email.',
+  );
+
+  const showAlreadyActive = (r) => showResult(
+    'You already have an active subscription',
+    'Premium is already active on this email, so there is nothing to pay.',
+    [['Sign-in email', r.email], ['Plan', r.plan]].concat(r.expiresAt ? [['Expires on', longDate(r.expiresAt)]] : []),
+    'You can buy a new plan after this one ends.',
+  );
+
+  payDialog.addEventListener('click', (e) => { if (e.target.closest('[data-pay-close]')) payDialog.close(); });
+  payDialog.addEventListener('close', () => {
+    if (payOpener && !handingOff) setTimeout(() => { if (!payDialog.open) payOpener.focus(); }, 0);
+  });
+
+  const loadCheckout = () => new Promise((resolve, reject) => {
+    if (window.Razorpay) return resolve();
+    const s = document.createElement('script');
+    s.src = 'https://checkout.razorpay.com/v1/checkout.js';
+    s.onload = resolve;
+    s.onerror = () => reject(new Error('The payment page could not load. Check your internet connection and try again.'));
+    document.head.append(s);
+  });
+
+  payForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const email = payEmail.value.trim().toLowerCase();
+    const email2 = payEmail2.value.trim().toLowerCase();
+    const emailErr = !email ? 'Enter your email address.'
+      : /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email) ? '' : 'Email needs one @ sign and a domain, for example name@gmail.com.';
+    const email2Err = emailErr ? '' : email2 !== email ? 'The two emails do not match. Type the same email in both boxes.' : '';
+    document.getElementById('pay-email-err').textContent = emailErr;
+    document.getElementById('pay-email2-err').textContent = email2Err;
+    payEmail.toggleAttribute('aria-invalid', !!emailErr);
+    payEmail2.toggleAttribute('aria-invalid', !!email2Err);
+    if (emailErr) { payEmail.focus(); return; }
+    if (email2Err) { payEmail2.focus(); return; }
+
+    paySubmit.disabled = true;
+    payStatus.textContent = 'Checking your email.';
+    try {
+      if (DEMO) {
+        await new Promise((r) => setTimeout(r, 600));
+        if (email.startsWith('active')) {
+          showAlreadyActive({ email, plan: '3 months', expiresAt: Date.now() + 40 * 86400000 });
+        } else {
+          const days = { '1m': 30, '3m': 90, '6m': 180, '1y': 365 }[payPlan.key];
+          const now = Date.now();
+          showSuccess({ email, plan: payPlan.label, startsAt: now, expiresAt: now + days * 86400000 });
+        }
+        return;
+      }
+
+      const order = await api('/order', { email, plan: payPlan.key, accepted: true });
+      if (order.status === 'already_active') { showAlreadyActive(order); return; }
+
+      payStatus.textContent = 'Opening the payment page.';
+      await loadCheckout();
+      handingOff = true;
+      payDialog.close();
+      const rzp = new window.Razorpay({
+        key: order.keyId,
+        order_id: order.orderId,
+        amount: order.amount,
+        currency: order.currency,
+        name: 'Netra Plus',
+        description: 'Premium, ' + order.plan,
+        prefill: { email: order.email },
+        readonly: { email: true },
+        notes: { email: order.email },
+        theme: { color: '#6E5100' },
+        modal: {
+          confirm_close: true,
+          ondismiss: () => showResult('Payment not completed', 'You closed the payment page. No money was taken.', [],
+            'You can press Subscribe again when you are ready.'),
+        },
+        handler: async (response) => {
+          showResult('Confirming your payment', 'Please wait a moment.', [], '');
+          try {
+            showSuccess(await api('/verify', response));
+          } catch (err) {
+            showResult('Payment received, confirming', 'We received your payment but could not confirm it yet. Premium turns on by itself within a few minutes.',
+              [['Sign-in email', order.email], ['Payment ID', response.razorpay_payment_id]],
+              'If Premium is not on within 15 minutes, email netraplushelpdesk@gmail.com with this payment ID.');
+          }
+        },
+      });
+      rzp.on('payment.failed', () => {});
+      rzp.open();
+    } catch (err) {
+      payStatus.textContent = err.message;
+      updateSubmit();
+    }
+  });
+
   document.querySelectorAll('[data-plan]').forEach((button) => {
     button.addEventListener('click', () => {
+      if (PAY_API || DEMO) { openPay(button); return; }
       const message = document.getElementById('message');
       message.value = 'I want to subscribe to Netra Plus Premium, ' + button.dataset.plan +
         ' plan.\nMy Netra Plus sign-in email: ';
