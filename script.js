@@ -135,9 +135,21 @@
   let payPlan = null;
   let payOpener = null;
   let handingOff = false;
-  let prices = {};
+  /* Shown on the page. The payment server decides what is charged and replaces these when it answers. */
+  const LIST_PRICES = { '1m': 3800, '3m': 9500, '6m': 16900, '1y': 25900 };
+  const PLAN_MONTHS = { '1m': 1, '3m': 3, '6m': 6, '1y': 12 };
+  let prices = { ...LIST_PRICES };
 
   const rupees = (paise) => '₹' + (paise / 100).toLocaleString('en-IN', { maximumFractionDigits: 2 });
+  const showPrice = (key) => {
+    const el = document.querySelector(`[data-price-for="${key}"]`);
+    if (!el || !prices[key]) return;
+    const months = PLAN_MONTHS[key];
+    el.textContent = 'Price: ' + rupees(prices[key]) +
+      (months > 1 ? ', about ' + rupees(Math.round(prices[key] / months / 100) * 100) + ' a month' : '');
+    el.hidden = false;
+  };
+  Object.keys(prices).forEach(showPrice);
   const longDate = (ms) => new Intl.DateTimeFormat(undefined, {
     weekday: 'long', day: 'numeric', month: 'long', year: 'numeric', hour: 'numeric', minute: '2-digit', timeZoneName: 'short',
   }).format(new Date(ms));
@@ -153,11 +165,7 @@
 
   if (PAY_API) {
     api('/plans').then((data) => {
-      data.plans.forEach((p) => {
-        prices[p.key] = p.amount;
-        const el = document.querySelector(`[data-price-for="${p.key}"]`);
-        if (el) { el.textContent = 'Price: ' + rupees(p.amount); el.hidden = false; }
-      });
+      data.plans.forEach((p) => { prices[p.key] = p.amount; showPrice(p.key); });
     }).catch(() => {});
   }
 
