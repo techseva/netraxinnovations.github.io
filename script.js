@@ -121,7 +121,7 @@
      PAY_API is the netraPay Cloud Function address. While it is empty, Subscribe falls back to the
      contact form, and ?demo=1 shows the whole flow without taking any payment. */
   const PAY_SERVER = 'https://asia-south1-netrax-mainapp.cloudfunctions.net/netraPay';
-  const PAY_LIVE = false; // true once live Razorpay keys are set; until then only ?paytest=1 reaches the server
+  const PAY_LIVE = true; // live Razorpay keys are set: every visitor can subscribe
   const query = new URLSearchParams(location.search);
   const PAY_API = PAY_LIVE || query.get('paytest') === '1' ? PAY_SERVER : '';
   const DEMO = !PAY_API && query.get('demo') === '1';
