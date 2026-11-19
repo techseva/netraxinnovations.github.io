@@ -139,13 +139,25 @@
   let payOpener = null;
   let handingOff = false;
   /* Shown on the page. The payment server decides what is charged and replaces these when it answers. */
-  const LIST_PRICES = { '1m': 3800, '3m': 9500, '6m': 16900, '1y': 25900 };
+  const LIST_PRICES = { '1m': 3900, '3m': 9900, '6m': 16900, '1y': 26900 };
   const PLAN_MONTHS = { '1m': 1, '3m': 3, '6m': 6, '1y': 12 };
   let prices = { ...LIST_PRICES };
 
-  const rupees = (paise) => '₹' + (paise / 100).toLocaleString('en-IN', { maximumFractionDigits: 2 });
-  const perMonth = (key) => (PLAN_MONTHS[key] > 1 && prices[key]
-    ? 'about ' + rupees(Math.round(prices[key] / PLAN_MONTHS[key] / 100) * 100) + ' a month' : '');
+  /* Currency of the prices shown; the payment server sends the amounts and decides what is charged. */
+  let currency = 'INR';
+  let decimals = 2;
+  const money = (minor) => {
+    const whole = currency === 'INR' && minor % 100 === 0;
+    return new Intl.NumberFormat(undefined, {
+      style: 'currency', currency, minimumFractionDigits: whole ? 0 : decimals, maximumFractionDigits: decimals,
+    }).format(minor / 10 ** decimals);
+  };
+  const rupees = money;
+  const perMonth = (key) => {
+    if (!(PLAN_MONTHS[key] > 1 && prices[key])) return '';
+    const each = prices[key] / PLAN_MONTHS[key];
+    return 'about ' + money(currency === 'INR' ? Math.round(each / 100) * 100 : Math.round(each)) + ' a month';
+  };
   const showPrice = (key) => {
     if (!prices[key]) return;
     const price = document.querySelector(`[data-card-price="${key}"]`);
@@ -196,10 +208,52 @@
     return data;
   };
 
+  /* Show prices in the visitor's currency: their last choice, else a guess from time zone and language. */
+  const currencySelect = document.getElementById('currency');
+  const currencyNote = document.getElementById('currency-note');
+  const currencyStatus = document.getElementById('currency-status');
+  const saved = {
+    get() { try { return localStorage.getItem('np-currency'); } catch (e) { return null; } },
+    set(v) { try { localStorage.setItem('np-currency', v); } catch (e) { /* not saved, fine */ } },
+  };
+  const guessCountry = () => {
+    const tz = (Intl.DateTimeFormat().resolvedOptions().timeZone || '');
+    if (/^Asia\/(Kolkata|Calcutta)$/.test(tz)) return 'IN';
+    const tagged = (navigator.languages || [navigator.language]).find((l) => /-[a-z]{2}$/i.test(l || ''));
+    return tagged ? tagged.split('-').pop().toUpperCase() : '';
+  };
+  const loadPrices = async (wanted, announce) => {
+    const data = await api('/plans?currency=' + encodeURIComponent(wanted || ''));
+    currency = data.currency;
+    decimals = data.decimals;
+    data.plans.forEach((p) => { prices[p.key] = p.amount; showPrice(p.key); });
+    const name = (data.currencies.find((c) => c.code === currency) || {}).name || currency;
+    if (currencySelect) {
+      if (currencySelect.options.length < data.currencies.length) {
+        currencySelect.replaceChildren(...data.currencies.map((c) => new Option(c.code + ', ' + c.name, c.code)));
+      }
+      currencySelect.value = currency;
+    }
+    if (currencyNote) currencyNote.textContent = 'Prices are in ' + name + '. You pay once per plan.';
+    if (announce && currencyStatus) currencyStatus.textContent = 'Prices now in ' + name + '.';
+    return data;
+  };
   if (PAY_API) {
-    api('/plans').then((data) => {
-      data.plans.forEach((p) => { prices[p.key] = p.amount; showPrice(p.key); });
+    const chosen = saved.get();
+    loadPrices(chosen || '', false).then((data) => {
+      if (chosen) return;
+      const country = guessCountry();
+      const match = data.currencies.find((c) => c.countries.includes(country));
+      if (match && match.code !== currency) loadPrices(match.code, false).catch(() => {});
     }).catch(() => {});
+    if (currencySelect) {
+      currencySelect.addEventListener('change', () => {
+        saved.set(currencySelect.value);
+        loadPrices(currencySelect.value, true).catch(() => {
+          if (currencyStatus) currencyStatus.textContent = 'Prices could not change. Check your connection and try again.';
+        });
+      });
+    }
   }
 
   const updateSubmit = () => { paySubmit.disabled = !(agreeEmail.checked && agreeTerms.checked); };
@@ -299,7 +353,7 @@
         return;
       }
 
-      const order = await api('/order', { email, plan: payPlan.key, accepted: true });
+      const order = await api('/order', { email, plan: payPlan.key, accepted: true, currency });
       if (order.status === 'already_active') { showAlreadyActive(order); return; }
 
       payStatus.textContent = 'Opening the payment page.';

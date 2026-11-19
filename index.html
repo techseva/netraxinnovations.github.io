@@ -16,7 +16,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=14109599">
+<link rel="stylesheet" href="style.css?v=e4158f4d">
 <script>document.documentElement.classList.add('js');</script>
 </head>
 <body>
@@ -336,14 +336,19 @@
 
     <h3 class="sub">Premium plans</h3>
     <p>Tap a plan to see its details and subscribe.</p>
+    <div class="currency-pick">
+      <label for="currency">Show prices in</label>
+      <select id="currency"><option value="INR">INR, Indian rupee</option></select>
+      <p id="currency-status" class="sr" role="status"></p>
+    </div>
     <ul class="plan-cards">
       <li><button type="button" class="plan-card" data-plan-open="1m" data-plan-name="1 month" aria-haspopup="dialog">
         <span class="plan-name">1 month</span><span class="sr">, </span>
-        <span class="plan-price" data-card-price="1m">₹38</span><span class="plan-per" data-card-per="1m"></span>
+        <span class="plan-price" data-card-price="1m">₹39</span><span class="plan-per" data-card-per="1m"></span>
       </button></li>
       <li><button type="button" class="plan-card" data-plan-open="3m" data-plan-name="3 months" aria-haspopup="dialog">
         <span class="plan-name">3 months</span><span class="sr">, </span>
-        <span class="plan-price" data-card-price="3m">₹95</span><span class="sr">, </span><span class="plan-per" data-card-per="3m">about ₹32 a month</span>
+        <span class="plan-price" data-card-price="3m">₹99</span><span class="sr">, </span><span class="plan-per" data-card-per="3m">about ₹33 a month</span>
       </button></li>
       <li><button type="button" class="plan-card" data-plan-open="6m" data-plan-name="6 months" aria-haspopup="dialog">
         <span class="plan-name">6 months</span><span class="sr">, </span>
@@ -351,10 +356,10 @@
       </button></li>
       <li><button type="button" class="plan-card plan-card-best" data-plan-open="1y" data-plan-name="1 year" aria-haspopup="dialog">
         <span class="plan-name">1 year</span><span class="sr">, </span><span class="tag">Best value</span><span class="sr">, </span>
-        <span class="plan-price" data-card-price="1y">₹259</span><span class="sr">, </span><span class="plan-per" data-card-per="1y">about ₹22 a month</span>
+        <span class="plan-price" data-card-price="1y">₹269</span><span class="sr">, </span><span class="plan-per" data-card-per="1y">about ₹22 a month</span>
       </button></li>
     </ul>
-    <p class="note">Prices are in Indian rupees. You pay once per plan.</p>
+    <p class="note" id="currency-note">Prices are in Indian rupee. You pay once per plan.</p>
 
     <ul class="items plan-info">
       <li class="item">
@@ -501,7 +506,7 @@
         <div class="panel prose" id="p-refund">
           <p>Last updated 19 November 2026. This policy covers Netra Plus Premium bought on this website.</p>
           <h4>What you buy</h4>
-          <p>Netra Plus Premium is a digital service. Each plan (1 month ₹38, 3 months ₹95, 6 months ₹169, 1 year ₹259) is paid once and gives Premium in the Netra Plus app for that fixed period, from the moment of payment.</p>
+          <p>Netra Plus Premium is a digital service. Each plan (1 month, 3 months, 6 months or 1 year, at the price shown on this page in your currency) is paid once and gives Premium in the Netra Plus app for that fixed period, from the moment of payment.</p>
           <h4>Cancellation</h4>
           <p>Plans do not renew automatically, so you are never charged again unless you buy again. There is nothing to cancel. Premium ends by itself on the expiry date shown after payment and in your invoice.</p>
           <h4>Refunds</h4>
@@ -601,6 +606,6 @@
 </footer>
 
 <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4.4.1/dist/email.min.js" defer></script>
-<script src="script.js?v=698de961" defer></script>
+<script src="script.js?v=18ad0371" defer></script>
 </body>
 </html>
