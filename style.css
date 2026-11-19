@@ -295,3 +295,4 @@ input:focus-visible, textarea:focus-visible { border-color: var(--focus); outlin
 .currency-pick { display: flex; flex-wrap: wrap; align-items: center; gap: .5rem .75rem; margin: 0 0 1rem; }
 .currency-pick label { font-weight: 700; }
 .currency-pick select { font: inherit; min-height: 48px; padding: .5rem .75rem; border: 2px solid var(--line); border-radius: 12px; background: var(--surface); color: var(--text); max-width: 100%; }
+.currency-pick[hidden] { display: none; }

@@ -228,6 +228,8 @@
     decimals = data.decimals;
     data.plans.forEach((p) => { prices[p.key] = p.amount; showPrice(p.key); });
     const name = (data.currencies.find((c) => c.code === currency) || {}).name || currency;
+    const picker = currencySelect && currencySelect.closest('.currency-pick');
+    if (picker) picker.hidden = data.currencies.length < 2; // one currency on sale: no choice to show
     if (currencySelect) {
       if (currencySelect.options.length < data.currencies.length) {
         currencySelect.replaceChildren(...data.currencies.map((c) => new Option(c.code + ', ' + c.name, c.code)));
