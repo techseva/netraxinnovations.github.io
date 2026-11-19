@@ -239,7 +239,9 @@
     return data;
   };
   if (PAY_API) {
-    const chosen = saved.get();
+    // ?currency=USD in the address previews that currency without changing the visitor's saved choice.
+    const preview = (new URLSearchParams(location.search).get('currency') || '').toUpperCase();
+    const chosen = /^[A-Z]{3}$/.test(preview) ? preview : saved.get();
     loadPrices(chosen || '', false).then((data) => {
       if (chosen) return;
       const country = guessCountry();
