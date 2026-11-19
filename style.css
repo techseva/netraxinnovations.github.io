@@ -170,8 +170,25 @@ input:focus-visible, textarea:focus-visible { border-color: var(--focus); outlin
 .plan-n { font-size: 1.3rem; font-weight: 700; display: flex; flex-wrap: wrap; align-items: center; gap: .5rem; margin-bottom: .25rem !important; }
 .plan-best { border-color: var(--accent); }
 .plan-info { margin: 1.5rem 0; }
-.plan-list { margin-bottom: 1rem; }
-.plan-list .disc { font-size: 1.2rem; }
+.plan-cards { list-style: none; padding: 0; margin: 0 0 1rem; display: grid; grid-template-columns: repeat(2, 1fr); gap: .75rem; }
+@media (min-width: 640px) { .plan-cards { grid-template-columns: repeat(4, 1fr); } }
+.plan-card {
+  width: 100%; height: 100%; min-height: 120px; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-start; gap: .2rem;
+  padding: 1rem; text-align: left; cursor: pointer; position: relative;
+  font: inherit; color: var(--text); background: var(--surface);
+  border: 2px solid var(--line); border-radius: 16px;
+  transition: background-color .2s var(--ease), border-color .2s var(--ease), transform .15s var(--ease);
+}
+.plan-card:hover { background: var(--soft); border-color: var(--accent); }
+.plan-card:active { transform: scale(.98); }
+.plan-card-best { border-color: var(--accent); background: color-mix(in srgb, var(--accent) 8%, var(--surface)); }
+.plan-card .tag { order: -1; margin-bottom: .2rem; }
+.plan-name { font-weight: 700; font-size: 1.15rem; }
+.plan-price { font-weight: 700; font-size: 1.75rem; line-height: 1.15; color: var(--accent); font-variant-numeric: tabular-nums; }
+.plan-per { color: var(--muted); font-size: .95rem; }
+.plan-dlg-price { font-size: 1.3rem; font-weight: 700; color: var(--accent); }
+.plan-facts { padding-left: 1.4rem; margin: 0 0 1rem; }
+.plan-facts li + li { margin-top: .35rem; }
 .cols { columns: 2 200px; }
 
 /* Developer */
@@ -223,7 +240,7 @@ input:focus-visible, textarea:focus-visible { border-color: var(--focus); outlin
 }
 
 @media (forced-colors: active) {
-  .disc, .plan, .dock, .panel, input, textarea { border-color: CanvasText; }
+  .disc, .plan, .plan-card, .dock, .panel, input, textarea { border-color: CanvasText; }
   .dock a[aria-current] { text-decoration: underline; }
 }
 

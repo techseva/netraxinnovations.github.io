@@ -335,56 +335,24 @@
     <p>Netra Plus is free to download and most features are free. Premium opens every feature, with no daily limits.</p>
 
     <h3 class="sub">Premium plans</h3>
-    <p>Choose a plan to see its details.</p>
-    <ul class="items plan-list">
-      <li class="item">
-        <h4 class="disc-h"><button type="button" class="disc" aria-expanded="false" aria-controls="p-plan-1-month"><span class="disc-t">1 month</span><svg class="chev" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 9l6 6 6-6"/></svg></button></h4>
-        <div class="panel" id="p-plan-1-month">
-          <ul class="plan-facts">
-            <li>Every premium feature, with no daily limits.</li>
-            <li>Paid once on a secure payment page.</li>
-            <li>Does not renew by itself. Premium ends on the expiry date shown after payment.</li>
-          </ul>
-          <p class="price" data-price-for="1m" hidden></p>
-          <p><button type="button" class="btn" data-plan="1 month" data-plan-key="1m">Subscribe to 1 month</button></p>
-        </div>
-      </li>
-      <li class="item">
-        <h4 class="disc-h"><button type="button" class="disc" aria-expanded="false" aria-controls="p-plan-3-months"><span class="disc-t">3 months</span><svg class="chev" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 9l6 6 6-6"/></svg></button></h4>
-        <div class="panel" id="p-plan-3-months">
-          <ul class="plan-facts">
-            <li>Every premium feature, with no daily limits.</li>
-            <li>Paid once on a secure payment page.</li>
-            <li>Does not renew by itself. Premium ends on the expiry date shown after payment.</li>
-          </ul>
-          <p class="price" data-price-for="3m" hidden></p>
-          <p><button type="button" class="btn" data-plan="3 months" data-plan-key="3m">Subscribe to 3 months</button></p>
-        </div>
-      </li>
-      <li class="item">
-        <h4 class="disc-h"><button type="button" class="disc" aria-expanded="false" aria-controls="p-plan-6-months"><span class="disc-t">6 months</span><svg class="chev" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 9l6 6 6-6"/></svg></button></h4>
-        <div class="panel" id="p-plan-6-months">
-          <ul class="plan-facts">
-            <li>Every premium feature, with no daily limits.</li>
-            <li>Paid once on a secure payment page.</li>
-            <li>Does not renew by itself. Premium ends on the expiry date shown after payment.</li>
-          </ul>
-          <p class="price" data-price-for="6m" hidden></p>
-          <p><button type="button" class="btn" data-plan="6 months" data-plan-key="6m">Subscribe to 6 months</button></p>
-        </div>
-      </li>
-      <li class="item">
-        <h4 class="disc-h"><button type="button" class="disc" aria-expanded="false" aria-controls="p-plan-1-year"><span class="disc-t">1 year<span class="sr">, </span><span class="tag">Best value</span></span><svg class="chev" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 9l6 6 6-6"/></svg></button></h4>
-        <div class="panel" id="p-plan-1-year">
-          <ul class="plan-facts">
-            <li>Every premium feature, with no daily limits.</li>
-            <li>Paid once on a secure payment page.</li>
-            <li>Does not renew by itself. Premium ends on the expiry date shown after payment.</li>
-          </ul>
-          <p class="price" data-price-for="1y" hidden></p>
-          <p><button type="button" class="btn" data-plan="1 year" data-plan-key="1y">Subscribe to 1 year</button></p>
-        </div>
-      </li>
+    <p>Tap a plan to see its details and subscribe.</p>
+    <ul class="plan-cards">
+      <li><button type="button" class="plan-card" data-plan-open="1m" data-plan-name="1 month" aria-haspopup="dialog">
+        <span class="plan-name">1 month</span><span class="sr">, </span>
+        <span class="plan-price" data-card-price="1m">₹38</span><span class="plan-per" data-card-per="1m"></span>
+      </button></li>
+      <li><button type="button" class="plan-card" data-plan-open="3m" data-plan-name="3 months" aria-haspopup="dialog">
+        <span class="plan-name">3 months</span><span class="sr">, </span>
+        <span class="plan-price" data-card-price="3m">₹95</span><span class="sr">, </span><span class="plan-per" data-card-per="3m">about ₹32 a month</span>
+      </button></li>
+      <li><button type="button" class="plan-card" data-plan-open="6m" data-plan-name="6 months" aria-haspopup="dialog">
+        <span class="plan-name">6 months</span><span class="sr">, </span>
+        <span class="plan-price" data-card-price="6m">₹169</span><span class="sr">, </span><span class="plan-per" data-card-per="6m">about ₹28 a month</span>
+      </button></li>
+      <li><button type="button" class="plan-card plan-card-best" data-plan-open="1y" data-plan-name="1 year" aria-haspopup="dialog">
+        <span class="plan-name">1 year</span><span class="sr">, </span><span class="tag">Best value</span><span class="sr">, </span>
+        <span class="plan-price" data-card-price="1y">₹259</span><span class="sr">, </span><span class="plan-per" data-card-per="1y">about ₹22 a month</span>
+      </button></li>
     </ul>
     <p class="note">Prices are in Indian rupees. You pay once per plan.</p>
 
@@ -395,7 +363,7 @@
       </li>
       <li class="item">
         <h3 class="disc-h"><button type="button" class="disc" aria-expanded="false" aria-controls="p-plan-how"><span class="disc-t">How to subscribe</span><svg class="chev" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 9l6 6 6-6"/></svg></button></h3>
-        <div class="panel" id="p-plan-how"><ol><li>Open a plan above and press Subscribe.</li><li>Enter the email you use, or will use, to sign in to the Netra Plus app, and tick both boxes.</li><li>Pay on the secure payment page. It opens on this page.</li><li>You see your plan and exact expiry date. Sign in to Netra Plus with that email and Premium is on.</li></ol></div>
+        <div class="panel" id="p-plan-how"><ol><li>Tap a plan above, check its details and press Subscribe.</li><li>Enter the email you use, or will use, to sign in to the Netra Plus app, and tick both boxes.</li><li>Pay on the secure payment page. It opens on this page.</li><li>You see your plan and exact expiry date. Sign in to Netra Plus with that email and Premium is on.</li></ol></div>
       </li>
       <li class="item">
         <h3 class="disc-h"><button type="button" class="disc" aria-expanded="false" aria-controls="p-plan-cancel"><span class="disc-t">Renew, refunds and restore</span><svg class="chev" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 9l6 6 6-6"/></svg></button></h3>
@@ -548,6 +516,21 @@
     </ul>
   </div>
 </section>
+
+<dialog id="plan-dialog" class="pay" aria-labelledby="plan-title" aria-describedby="plan-price">
+  <h2 id="plan-title" class="pay-title" tabindex="-1">Premium plan</h2>
+  <p id="plan-price" class="plan-dlg-price"></p>
+  <ul class="plan-facts">
+    <li>Every premium feature, with no daily limits.</li>
+    <li>Paid once on a secure payment page.</li>
+    <li>Does not renew by itself. Premium ends on the expiry date shown after payment.</li>
+    <li>Premium works on the email you pay with. Sign in to the Netra Plus app with that email.</li>
+  </ul>
+  <div class="pay-actions">
+    <button type="button" class="btn" id="plan-subscribe" data-plan="" data-plan-key="">Subscribe</button>
+    <button type="button" class="btn btn-quiet" data-plan-close>Close</button>
+  </div>
+</dialog>
 
 <dialog id="pay-dialog" class="pay" aria-labelledby="pay-title">
   <div id="pay-form-view">

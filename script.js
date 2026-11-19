@@ -144,15 +144,45 @@
   let prices = { ...LIST_PRICES };
 
   const rupees = (paise) => '₹' + (paise / 100).toLocaleString('en-IN', { maximumFractionDigits: 2 });
+  const perMonth = (key) => (PLAN_MONTHS[key] > 1 && prices[key]
+    ? 'about ' + rupees(Math.round(prices[key] / PLAN_MONTHS[key] / 100) * 100) + ' a month' : '');
   const showPrice = (key) => {
-    const el = document.querySelector(`[data-price-for="${key}"]`);
-    if (!el || !prices[key]) return;
-    const months = PLAN_MONTHS[key];
-    el.textContent = 'Price: ' + rupees(prices[key]) +
-      (months > 1 ? ', about ' + rupees(Math.round(prices[key] / months / 100) * 100) + ' a month' : '');
-    el.hidden = false;
+    if (!prices[key]) return;
+    const price = document.querySelector(`[data-card-price="${key}"]`);
+    const per = document.querySelector(`[data-card-per="${key}"]`);
+    if (price) price.textContent = rupees(prices[key]);
+    if (per) per.textContent = perMonth(key);
   };
   Object.keys(prices).forEach(showPrice);
+
+  /* Plan details: each plan card opens a dialog with its price, details and the Subscribe button. */
+  const planDialog = document.getElementById('plan-dialog');
+  const planSubscribe = document.getElementById('plan-subscribe');
+  let planCard = null;
+  let planHandingOff = false;
+  document.querySelectorAll('[data-plan-open]').forEach((card) => {
+    card.addEventListener('click', () => {
+      const key = card.dataset.planOpen;
+      const name = card.dataset.planName;
+      planCard = card;
+      document.getElementById('plan-title').textContent = name + ' plan';
+      document.getElementById('plan-price').textContent = prices[key]
+        ? rupees(prices[key]) + ' for ' + name + (perMonth(key) ? ', ' + perMonth(key) : '') + '. Paid once.'
+        : 'Paid once.';
+      planSubscribe.dataset.plan = name;
+      planSubscribe.dataset.planKey = key;
+      planSubscribe.textContent = 'Subscribe to ' + name;
+      planDialog.showModal();
+      document.getElementById('plan-title').focus();
+    });
+  });
+  planDialog.addEventListener('click', (e) => {
+    if (e.target.closest('[data-plan-close]') || e.target === planDialog) planDialog.close();
+  });
+  planDialog.addEventListener('close', () => {
+    if (planCard && !planHandingOff) planCard.focus();
+    planHandingOff = false;
+  });
   const longDate = (ms) => new Intl.DateTimeFormat(undefined, {
     weekday: 'long', day: 'numeric', month: 'long', year: 'numeric', hour: 'numeric', minute: '2-digit', timeZoneName: 'short',
   }).format(new Date(ms));
@@ -176,9 +206,9 @@
   agreeEmail.addEventListener('change', updateSubmit);
   agreeTerms.addEventListener('change', updateSubmit);
 
-  const openPay = (button) => {
+  const openPay = (button, opener = button) => {
     payPlan = { key: button.dataset.planKey, label: button.dataset.plan };
-    payOpener = button;
+    payOpener = opener;
     payForm.reset();
     ['pay-email-err', 'pay-email2-err'].forEach((id) => { document.getElementById(id).textContent = ''; });
     [payEmail, payEmail2].forEach((f) => f.removeAttribute('aria-invalid'));
@@ -314,7 +344,13 @@
 
   document.querySelectorAll('[data-plan]').forEach((button) => {
     button.addEventListener('click', () => {
-      if (PAY_API || DEMO) { openPay(button); return; }
+      let opener = button;
+      if (planDialog.open && planDialog.contains(button)) {
+        planHandingOff = true;
+        planDialog.close();
+        opener = planCard;
+      }
+      if (PAY_API || DEMO) { openPay(button, opener); return; }
       const message = document.getElementById('message');
       message.value = 'I want to subscribe to Netra Plus Premium, ' + button.dataset.plan +
         ' plan.\nMy Netra Plus sign-in email: ';
