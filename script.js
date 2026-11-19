@@ -313,6 +313,7 @@
         currency: order.currency,
         name: 'Netra Plus',
         description: 'Netra Plus Premium, ' + order.plan,
+        image: 'https://techseva.github.io/netraxinnovations.github.io/logo-checkout-256.png',
         prefill: { email: order.email },
         readonly: { email: true },
         notes: { email: order.email },
