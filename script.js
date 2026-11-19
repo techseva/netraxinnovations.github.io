@@ -313,7 +313,8 @@
         currency: order.currency,
         name: 'Netra Plus',
         description: 'Netra Plus Premium, ' + order.plan,
-        image: 'https://techseva.github.io/netraxinnovations.github.io/logo-checkout-256.png',
+        // Logo and brand name in this window come from Razorpay Dashboard branding; Razorpay ignores them here.
+        theme: { color: '#15161A' },
         prefill: { email: order.email },
         readonly: { email: true },
         notes: { email: order.email },
